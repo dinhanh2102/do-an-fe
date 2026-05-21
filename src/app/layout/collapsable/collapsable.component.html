@@ -1,0 +1,14 @@
+<li [ngClass]="{'active':isOpen}" *appUipermission="item.permission">
+    <a href="javascript:void(0)" (click)="toggleOpen($event)" >
+        <i *ngIf="item.icon" class="{{item.icon}}"></i>
+        <span class="title">{{item.titleDefault  | translate}}</span>
+        <span class="arrow material-icons" *ngIf="!isOpen">keyboard_arrow_right</span>
+        <span class="arrow material-icons" *ngIf="isOpen">keyboard_arrow_down</span>
+    </a>
+    <ul class="wraplist wraplist-sub sub-menu dk"  [id]="item.id">
+        <ng-container *ngFor="let child of item.children">
+            <nav-collapsable *ngIf="child.type=='collapsable'" [item]="child"></nav-collapsable>
+            <nav-item *ngIf="child.type=='item'" [item]="child"></nav-item>
+        </ng-container>
+    </ul>
+</li>

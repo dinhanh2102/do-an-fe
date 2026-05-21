@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h4 class="modal-title text-uppercase">{{ modalInfo.Title }}</h4>
+    <a href="javascript:void(0)" class="close_modal" type="button" class="close" aria-label="Close"
+        (click)="closeModal(false)">
+        <span aria-hidden="true">&times;</span>
+    </a>
+</div>
+<div class="modal-body padding-15">
+    <form name="form" #f="ngForm">
+        <div class="row">
+            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-label">{{ "Tên loại công" | translate }}
+                        <span class="text-danger text-strong">&nbsp;*</span>
+                    </label>
+                    <div class="controls">
+                        <input type="text" class="form-control" [(ngModel)]="model.name" name="TenLoaiCa"
+                            maxlength="150" required />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label class="form-label">{{ "Hệ số" | translate }}
+                        <span class="text-danger text-strong">&nbsp;*</span>
+                    </label>
+                    <div class="controls">
+                        <input type="text" class="form-control" [(ngModel)]="model.heSo" name="heSo" maxlength="150"
+                            required />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <ng-container>
+        <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="save(false)">
+            <i class="fa fa-save"></i>&nbsp;
+            <span>{{ "Lưu" | translate }}</span>
+        </button>
+    </ng-container>
+    <ng-container *ngIf="!id">
+        <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)="saveAndContinue()">
+            <i class="fa fa-save"></i>&nbsp;
+            <span>{{ "Lưu và tiếp tục" | translate }}</span>
+        </button>
+    </ng-container>
+    <button type="button" class="btn btn-danger" (click)="closeModal(false)">
+        <i class="fa fa-power-off"></i> &nbsp;
+        <span>
+            {{ "Đóng" | translate }}
+        </span>
+    </button>
+</div>

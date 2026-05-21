@@ -1,0 +1,86 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?a681b94483d2d9efeeb065adf5e169df") format("truetype"),
+url("./flaticon.woff?a681b94483d2d9efeeb065adf5e169df") format("woff"),
+url("./flaticon.woff2?a681b94483d2d9efeeb065adf5e169df") format("woff2"),
+url("./flaticon.eot?a681b94483d2d9efeeb065adf5e169df#iefix") format("embedded-opentype"),
+url("./flaticon.svg?a681b94483d2d9efeeb065adf5e169df#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-briefcase:before {
+    content: "\f101";
+}
+.flaticon-home:before {
+    content: "\f102";
+}
+.flaticon-file:before {
+    content: "\f103";
+}
+.flaticon-workflow:before {
+    content: "\f104";
+}
+.flaticon-technics:before {
+    content: "\f105";
+}
+.flaticon-settings:before {
+    content: "\f106";
+}
+.flaticon-dashboard:before {
+    content: "\f107";
+}
+.flaticon-add:before {
+    content: "\f108";
+}
+.flaticon-edit:before {
+    content: "\f109";
+}
+.flaticon-clipboard:before {
+    content: "\f10a";
+}
+.flaticon-approval:before {
+    content: "\f10b";
+}
+.flaticon-selection:before {
+    content: "\f10c";
+}
+.flaticon-list:before {
+    content: "\f10d";
+}
+.flaticon-to-do:before {
+    content: "\f10e";
+}
+.flaticon-check:before {
+    content: "\f10f";
+}
+.flaticon-accept:before {
+    content: "\f110";
+}
+.flaticon-done:before {
+    content: "\f111";
+}
+.flaticon-stop:before {
+    content: "\f112";
+}
+.flaticon-cancel:before {
+    content: "\f113";
+}
+.flaticon-file-1:before {
+    content: "\f114";
+}
+.flaticon-verified:before {
+    content: "\f115";
+}
+.flaticon-windows-squares-button-outline:before {
+    content: "\f116";
+}

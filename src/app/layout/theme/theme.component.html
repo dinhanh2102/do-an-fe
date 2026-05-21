@@ -1,0 +1,1250 @@
+<div class="theme-list" [@openClose]="isOpen ? 'open' : 'closed'">
+    <div class="theme-header">
+        <h4>Cấu hình Theme</h4>
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <perfect-scrollbar class="ps-bordered" [config]="constant.ScrollYConfig" style="width:100%;"
+        [style.height.px]="height">
+        <div class="theme-body">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group ">
+                        <label class="form-label">Theme
+
+                        </label>
+                        <select class="form-control" [(ngModel)]="themeSelect" (ngModelChange)="changeTheme()">
+                            <option *ngFor="let row of themes" [ngValue]="row">{{row.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <section class="box">
+                <header>
+                    <h2 class="title">Body</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền trang
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.bodyBackground"
+                                    [style.background]="themeSelect.bodyBackground"
+                                    [(colorPicker)]="themeSelect.bodyBackground"
+                                    (colorPickerChange)="changeBodyBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ trang (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.bodyFontsize"
+                                    (ngModelChange)="changeBodyFontsize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding trang (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.contentWrapperPadding"
+                                    (ngModelChange)="changeContentWrapperPadding()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <header>
+                    <h2 class="title">Top bar</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền logo
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarLogoBackground"
+                                    [style.background]="themeSelect.topbarLogoBackground"
+                                    [(colorPicker)]="themeSelect.topbarLogoBackground"
+                                    (colorPickerChange)="changeTopbarLogoBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ logo
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarLogoColor"
+                                    [style.background]="themeSelect.topbarLogoColor"
+                                    [(colorPicker)]="themeSelect.topbarLogoColor"
+                                    (colorPickerChange)="changeTopbarLogoColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ logo (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.topbarLogoSize"
+                                    (ngModelChange)="changeTopbarLogoSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền topbar
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarBackground"
+                                    [style.background]="themeSelect.topbarBackground"
+                                    [(colorPicker)]="themeSelect.topbarBackground"
+                                    (colorPickerChange)="changeTopbarBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ topbar
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarColor"
+                                    [style.background]="themeSelect.topbarColor"
+                                    [(colorPicker)]="themeSelect.topbarColor" (colorPickerChange)="changeTopbarColor()"
+                                    [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ topbar (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.topbarSize"
+                                    (ngModelChange)="changeTopbarSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền tìm kiếm
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarSearchBackground"
+                                    [style.background]="themeSelect.topbarSearchBackground"
+                                    [(colorPicker)]="themeSelect.topbarSearchBackground"
+                                    (colorPickerChange)="changeTopbarSearchBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ tìm kiếm
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarSearchColor"
+                                    [style.background]="themeSelect.topbarSearchColor"
+                                    [(colorPicker)]="themeSelect.topbarSearchColor"
+                                    (colorPickerChange)="changeTopbarSearchColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ tìm kiếm
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.topbarSearchSize"
+                                    (ngModelChange)="changeTopbarSearchSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu icon tìm kiếm
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarSearchIconColor"
+                                    [style.background]="themeSelect.topbarSearchIconColor"
+                                    [(colorPicker)]="themeSelect.topbarSearchIconColor"
+                                    (colorPickerChange)="changeTopbarSearchIconColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="box ">
+                <header>
+                    <h2 class="title">Toolbar</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.pageToolbarBackgroundColor"
+                                    [style.background]="themeSelect.pageToolbarBackgroundColor"
+                                    [(colorPicker)]="themeSelect.pageToolbarBackgroundColor"
+                                    (colorPickerChange)="changePageToolbarBackgroundColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.pageToolbarTitleColor"
+                                    [style.background]="themeSelect.pageToolbarTitleColor"
+                                    [(colorPicker)]="themeSelect.pageToolbarTitleColor"
+                                    (colorPickerChange)="changePageToolbarTitleColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.pageToolbarTitleSize"
+                                    (ngModelChange)="changePageToolbarTitleSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Độ đậm chữ
+
+                                </label>
+                                <input class="form-control" type="number"
+                                    [(ngModel)]="themeSelect.pageToolbarTitleWeight"
+                                    (ngModelChange)="changePageToolbarTitleWeight()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền tìm kiếm
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarSearchBackground"
+                                    [style.background]="themeSelect.topbarSearchBackground"
+                                    [(colorPicker)]="themeSelect.topbarSearchBackground"
+                                    (colorPickerChange)="changeTopbarSearchBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ tìm kiếm
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.topbarSearchColor"
+                                    [style.background]="themeSelect.topbarSearchColor"
+                                    [(colorPicker)]="themeSelect.topbarSearchColor"
+                                    (colorPickerChange)="changeTopbarSearchColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ tìm kiếm
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.topbarSearchSize"
+                                    (ngModelChange)="changeTopbarSearchSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu icon
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.pageToolbarIconColor"
+                                    [style.background]="themeSelect.pageToolbarIconColor"
+                                    [(colorPicker)]="themeSelect.pageToolbarIconColor"
+                                    (colorPickerChange)="changePageToolbarIconColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu hover icon
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.pageToolbarIconHoverColor"
+                                    [style.background]="themeSelect.pageToolbarIconHoverColor"
+                                    [(colorPicker)]="themeSelect.pageToolbarIconHoverColor"
+                                    (colorPickerChange)="changePageToolbarIconHoverColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="box">
+                <header>
+                    <h2 class="title">Menu trái</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarBackground"
+                                    [style.background]="themeSelect.leftbarBackground"
+                                    [(colorPicker)]="themeSelect.leftbarBackground"
+                                    (colorPickerChange)="changeLeftbarBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarTextColor"
+                                    [style.background]="themeSelect.leftbarTextColor"
+                                    [(colorPicker)]="themeSelect.leftbarTextColor"
+                                    (colorPickerChange)="changeLeftbarTextColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu icon menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarIconColor"
+                                    [style.background]="themeSelect.leftbarIconColor"
+                                    [(colorPicker)]="themeSelect.leftbarIconColor"
+                                    (colorPickerChange)="changeLeftbarIconColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div> -->
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarHoverBackground"
+                                    [style.background]="themeSelect.leftbarHoverBackground"
+                                    [(colorPicker)]="themeSelect.leftbarHoverBackground"
+                                    (colorPickerChange)="changeLeftbarBackgroundHover()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarHoverColor"
+                                    [style.background]="themeSelect.leftbarHoverColor"
+                                    [(colorPicker)]="themeSelect.leftbarHoverColor"
+                                    (colorPickerChange)="changeLeftbarHoverColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu Shadow khi hover menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarHoverShadow"
+                                    [style.background]="themeSelect.leftbarHoverShadow"
+                                    [(colorPicker)]="themeSelect.leftbarHoverShadow"
+                                    (colorPickerChange)="changeLeftbarHoverShadow()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền khi chọn menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarActiveBackground"
+                                    [style.background]="themeSelect.leftbarActiveBackground"
+                                    [(colorPicker)]="themeSelect.leftbarActiveBackground"
+                                    (colorPickerChange)="changeLeftbarActiveBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ khi chọn menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarActiveColor"
+                                    [style.background]="themeSelect.leftbarActiveColor"
+                                    [(colorPicker)]="themeSelect.leftbarActiveColor"
+                                    (colorPickerChange)="changeLeftbarActiveColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu Shadow khi chọn menu trái
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.leftbarActiveShadow"
+                                    [style.background]="themeSelect.leftbarActiveShadow"
+                                    [(colorPicker)]="themeSelect.leftbarActiveShadow"
+                                    (colorPickerChange)="changeLeftbarActiveShadow()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chư menu trái (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.leftbarTextsize"
+                                    (ngModelChange)="changeLeftbarTextsize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ icon menu trái (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.leftbarIconsize"
+                                    (ngModelChange)="changeLeftbarIconsize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding item menu
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.leftbarItemPadding"
+                                    (ngModelChange)="changeLeftbarItemPadding()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box">
+                <header>
+                    <h2 class="title">Table</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền header bảng
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableHeaderBackground"
+                                    [style.background]="themeSelect.tableHeaderBackground"
+                                    [(colorPicker)]="themeSelect.tableHeaderBackground"
+                                    (colorPickerChange)="changeTableHeaderBackground()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ header bảng
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableHeaderColor"
+                                    [style.background]="themeSelect.tableHeaderColor"
+                                    [(colorPicker)]="themeSelect.tableHeaderColor"
+                                    (colorPickerChange)="changeTableHeaderColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding header (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.tableHeaderPadding"
+                                    (ngModelChange)="changeTableHeaderPadding()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableBodyHoverBackgroundColor"
+                                    [style.background]="themeSelect.tableBodyHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.tableBodyHoverBackgroundColor"
+                                    (colorPickerChange)="changeTableBodyHoverBackgroundColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableBodyHoverColor"
+                                    [style.background]="themeSelect.tableBodyHoverColor"
+                                    [(colorPicker)]="themeSelect.tableBodyHoverColor"
+                                    (colorPickerChange)="changeTableBodyHoverColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền select
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableBodySelectedBackgroundColor"
+                                    [style.background]="themeSelect.tableBodySelectedBackgroundColor"
+                                    [(colorPicker)]="themeSelect.tableBodySelectedBackgroundColor"
+                                    (colorPickerChange)="changeTableBodySelectedBackgroundColor()"
+                                    [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ select
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableBodySelectedColor"
+                                    [style.background]="themeSelect.tableBodySelectedColor"
+                                    [(colorPicker)]="themeSelect.tableBodySelectedColor"
+                                    (colorPickerChange)="changeTableBodySelectedColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding body (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.tableBodyPadding"
+                                    (ngModelChange)="changeTableBodyPadding()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.tableBorderColor"
+                                    [style.background]="themeSelect.tableBorderColor"
+                                    [(colorPicker)]="themeSelect.tableBorderColor"
+                                    (colorPickerChange)="changeTableBorderColor()" [cpPosition]="'left'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <header>
+                    <h2 class="title">Box</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Margin top (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.boxMarginTop"
+                                    (ngModelChange)="changeBoxMarginTop()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu header
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.boxHeaderBackgroundColor"
+                                    [style.background]="themeSelect.boxHeaderBackgroundColor"
+                                    [(colorPicker)]="themeSelect.boxHeaderBackgroundColor"
+                                    (colorPickerChange)="changeBoxHeaderBackgroundColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ header
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.boxHeaderColor"
+                                    [style.background]="themeSelect.boxHeaderColor"
+                                    [(colorPicker)]="themeSelect.boxHeaderColor"
+                                    (colorPickerChange)="changeBoxHeaderColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ header
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.boxHeaderSize"
+                                    (ngModelChange)="changeBoxHeaderSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Chiều cao header (px)
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.boxHeaderHeight"
+                                    (ngModelChange)="changeBoxHeaderHeight()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding header (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.boxHeaderPadding"
+                                    (ngModelChange)="changeBoxHeaderPadding()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền body
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.boxBodyBackgroundColor"
+                                    [style.background]="themeSelect.boxBodyBackgroundColor"
+                                    [(colorPicker)]="themeSelect.boxBodyBackgroundColor"
+                                    (colorPickerChange)="changeBoxBodyBackgroundColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding body (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.boxBodyPadding"
+                                    (ngModelChange)="changeBoxBodyPadding()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Bo góc
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.boxRadius"
+                                    (ngModelChange)="changeBoxRadius()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <header>
+                    <h2 class="title">Modal</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền header
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.modalHeaderBackgroudColor"
+                                    [style.background]="themeSelect.modalHeaderBackgroudColor"
+                                    [(colorPicker)]="themeSelect.modalHeaderBackgroudColor"
+                                    (colorPickerChange)="changeModalHeaderBackgroudColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ header
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.modalHeaderColor"
+                                    [style.background]="themeSelect.modalHeaderColor"
+                                    [(colorPicker)]="themeSelect.modalHeaderColor"
+                                    (colorPickerChange)="changeModalHeaderColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="form-label">Màu icon close
+
+                            </label>
+                            <input class="form-control" [value]="themeSelect.modalHeaderCloseColor"
+                                [style.background]="themeSelect.modalHeaderCloseColor"
+                                [(colorPicker)]="themeSelect.modalHeaderCloseColor"
+                                (colorPickerChange)="changeModalHeaderCloseColor()" [cpPosition]="'auto'" />
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ header
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.modalHeaderSize"
+                                    (ngModelChange)="changeModalHeaderSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding header (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.modalHeaderPadding"
+                                    (ngModelChange)="changeModalHeaderPadding()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền footer
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.modalFooterPackgroudColor"
+                                    [style.background]="themeSelect.modalFooterPackgroudColor"
+                                    [(colorPicker)]="themeSelect.modalFooterPackgroudColor"
+                                    (colorPickerChange)="changeModalFooterBackgroudColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding body (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.modalBodyPadding"
+                                    (ngModelChange)="changeModalBodyPadding()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding footer (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.modalFooterPadding"
+                                    (ngModelChange)="changeModalFooterPadding()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <header>
+                    <h2 class="title">Group thông tin</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền header
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.groupInfoHeaderBackgroudColor"
+                                    [style.background]="themeSelect.groupInfoHeaderBackgroudColor"
+                                    [(colorPicker)]="themeSelect.groupInfoHeaderBackgroudColor"
+                                    (colorPickerChange)="changeGroupInfoHeaderBackgroudColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ header
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.groupInfoHeaderColor"
+                                    [style.background]="themeSelect.groupInfoHeaderColor"
+                                    [(colorPicker)]="themeSelect.groupInfoHeaderColor"
+                                    (colorPickerChange)="changeGroupInfoHeaderColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Cỡ chữ header
+
+                                </label>
+                                <input class="form-control" type="number" [(ngModel)]="themeSelect.groupInfoHeaderSize"
+                                    (ngModelChange)="changeGroupInfoHeaderSize()" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding header (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.groupInfoHeaderPadding"
+                                    (ngModelChange)="changeGroupInfoHeaderPadding()" />
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Padding body (px)
+
+                                </label>
+                                <input class="form-control" [(ngModel)]="themeSelect.modalFooterPadding"
+                                    (ngModelChange)="changeModalFooterPadding()" />
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <header>
+                    <h2 class="title">Màu control</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ success
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.successColor"
+                                    [style.background]="themeSelect.successColor"
+                                    [(colorPicker)]="themeSelect.successColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền success
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.successBackgroundColor"
+                                    [style.background]="themeSelect.successBackgroundColor"
+                                    [(colorPicker)]="themeSelect.successBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border success
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.successBorderColor"
+                                    [style.background]="themeSelect.successBorderColor"
+                                    [(colorPicker)]="themeSelect.successBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover success
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.successHoverColor"
+                                    [style.background]="themeSelect.successHoverColor"
+                                    [(colorPicker)]="themeSelect.successHoverColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover success
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.successHoverBackgroundColor"
+                                    [style.background]="themeSelect.successHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.successHoverBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border hover success
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.successHoverBorderColor"
+                                    [style.background]="themeSelect.successHoverBorderColor"
+                                    [(colorPicker)]="themeSelect.successHoverBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chức info
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.infoColor"
+                                    [style.background]="themeSelect.infoColor"
+                                    [(colorPicker)]="themeSelect.infoColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền info
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.infoBackgroundColor"
+                                    [style.background]="themeSelect.infoBackgroundColor"
+                                    [(colorPicker)]="themeSelect.infoBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border info
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.infoBorderColor"
+                                    [style.background]="themeSelect.infoBorderColor"
+                                    [(colorPicker)]="themeSelect.infoBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover info
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.infoHoverColor"
+                                    [style.background]="themeSelect.infoHoverColor"
+                                    [(colorPicker)]="themeSelect.infoHoverColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover info
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.infoHoverBackgroundColor"
+                                    [style.background]="themeSelect.infoHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.infoHoverBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border hover info
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.infoHoverBorderColor"
+                                    [style.background]="themeSelect.infoHoverBorderColor"
+                                    [(colorPicker)]="themeSelect.infoHoverBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chức warning
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.warningColor"
+                                    [style.background]="themeSelect.warningColor"
+                                    [(colorPicker)]="themeSelect.warningColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền warning
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.warningBackgroundColor"
+                                    [style.background]="themeSelect.warningBackgroundColor"
+                                    [(colorPicker)]="themeSelect.warningBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border warning
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.warningBorderColor"
+                                    [style.background]="themeSelect.warningBorderColor"
+                                    [(colorPicker)]="themeSelect.warningBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover warning
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.warningHoverColor"
+                                    [style.background]="themeSelect.warningHoverColor"
+                                    [(colorPicker)]="themeSelect.warningHoverColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover warning
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.warningHoverBackgroundColor"
+                                    [style.background]="themeSelect.warningHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.warningHoverBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border hover warning
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.warningHoverBorderColor"
+                                    [style.background]="themeSelect.warningHoverBorderColor"
+                                    [(colorPicker)]="themeSelect.warningHoverBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chức danger
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.dangerColor"
+                                    [style.background]="themeSelect.dangerColor"
+                                    [(colorPicker)]="themeSelect.dangerColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền danger
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.dangerBackgroundColor"
+                                    [style.background]="themeSelect.dangerBackgroundColor"
+                                    [(colorPicker)]="themeSelect.dangerBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border danger
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.dangerBorderColor"
+                                    [style.background]="themeSelect.dangerBorderColor"
+                                    [(colorPicker)]="themeSelect.dangerBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover danger
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.dangerHoverColor"
+                                    [style.background]="themeSelect.dangerHoverColor"
+                                    [(colorPicker)]="themeSelect.dangerHoverColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover danger
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.dangerHoverBackgroundColor"
+                                    [style.background]="themeSelect.dangerHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.dangerHoverBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border hover danger
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.dangerHoverBorderColor"
+                                    [style.background]="themeSelect.dangerHoverBorderColor"
+                                    [(colorPicker)]="themeSelect.dangerHoverBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chức primary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.primaryColor"
+                                    [style.background]="themeSelect.primaryColor"
+                                    [(colorPicker)]="themeSelect.primaryColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền primary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.primaryBackgroundColor"
+                                    [style.background]="themeSelect.primaryBackgroundColor"
+                                    [(colorPicker)]="themeSelect.primaryBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border primary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.primaryBorderColor"
+                                    [style.background]="themeSelect.primaryBorderColor"
+                                    [(colorPicker)]="themeSelect.primaryBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover primary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.primaryHoverColor"
+                                    [style.background]="themeSelect.primaryHoverColor"
+                                    [(colorPicker)]="themeSelect.primaryHoverColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover primary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.primaryHoverBackgroundColor"
+                                    [style.background]="themeSelect.primaryHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.primaryHoverBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border hover primary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.primaryHoverBorderColor"
+                                    [style.background]="themeSelect.primaryHoverBorderColor"
+                                    [(colorPicker)]="themeSelect.primaryHoverBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chức secondary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.secondaryColor"
+                                    [style.background]="themeSelect.secondaryColor"
+                                    [(colorPicker)]="themeSelect.secondaryColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền secondary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.secondaryBackgroundColor"
+                                    [style.background]="themeSelect.secondaryBackgroundColor"
+                                    [(colorPicker)]="themeSelect.secondaryBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border secondary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.secondaryBorderColor"
+                                    [style.background]="themeSelect.secondaryBorderColor"
+                                    [(colorPicker)]="themeSelect.secondaryBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu chữ hover secondary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.secondaryHoverColor"
+                                    [style.background]="themeSelect.secondaryHoverColor"
+                                    [(colorPicker)]="themeSelect.secondaryHoverColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền hover secondary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.secondaryHoverBackgroundColor"
+                                    [style.background]="themeSelect.secondaryHoverBackgroundColor"
+                                    [(colorPicker)]="themeSelect.secondaryHoverBackgroundColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu border hover secondary
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.secondaryHoverBorderColor"
+                                    [style.background]="themeSelect.secondaryHoverBorderColor"
+                                    [(colorPicker)]="themeSelect.secondaryHoverBorderColor"
+                                    (colorPickerChange)="changentCSSControl()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <header>
+                    <h2 class="title">Khác</h2>
+                    <div class="actions">
+                        <i class="box_toggle fa fa-chevron-down"></i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group ">
+                                <label class="form-label">Màu nền NTS image
+
+                                </label>
+                                <input class="form-control" [value]="themeSelect.ntsImageBackgroudColor"
+                                    [style.background]="themeSelect.ntsImageBackgroudColor"
+                                    [(colorPicker)]="themeSelect.ntsImageBackgroudColor"
+                                    (colorPickerChange)="changentsImageBackgroudColor()" [cpPosition]="'auto'" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="box ">
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group ">
+                                <button type="button" class="btn btn-success" (click)="saveTheme()">
+                                    <i class="fa fa-save"></i>&nbsp;
+                                    <span>Lưu Theme</span>
+                                </button>
+                                <button type="button" class="btn btn-danger" (click)="deleteTheme()">
+                                    <i class="fas fa-times"></i>&nbsp;
+                                    <span>Xóa Theme</span>
+                                </button>
+                                <button type="button" class="btn btn-success" (click)="downloadTheme()">
+                                    <i class="fa fa-download"></i>&nbsp;
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </perfect-scrollbar>
+</div>

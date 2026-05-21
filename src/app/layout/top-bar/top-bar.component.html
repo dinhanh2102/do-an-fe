@@ -1,0 +1,93 @@
+<!-- START TOPBAR sidebar_shift-->
+<div
+    class="page-topbar {{appSetting.MenuFolded ? 'sidebar_shift' : ''}} {{modelConfig.iShowLogoTopBar ? '' : 'hide-logo-top'}}">
+    <div class='logo-area' *ngIf="modelConfig.iShowLogoTopBar">
+    </div>
+    <div class='quick-area'>
+        <div class='pull-left slantit'>
+            <ul class="info-menu left-links list-inline list-unstyled">
+                <li class="sidebar-toggle-wrap">
+                    <a href="javascript:;" data-toggle="sidebar" class="sidebar_toggle"
+                        (click)="menuChatToggle('menu') ">
+                        <i class="material-icons">menu</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="pull-left pagetitle">
+            <h1> {{modelConfig.softwareName}}</h1>
+            <!-- <h1> {{'ProductName' | translate }}</h1> -->
+        </div>
+        <div class='pull-right quickright'>
+            <ul class="navbar info-menu right-links list-inline">
+                <!-- <li class="list-inline-item notify">
+                    <a href="javascript:;" class="toggle_notify" (click)="showNotify()">
+                        <i class="fas fa-bell"></i>
+                        <span  class="badge badge-danger">1</span>
+                    </a>
+                </li>
+                <li class="flag" *ngIf="modelConfig.isUseMultiLanguage">
+                    <span class="flag-code">{{translate.currentLang}}</span>
+                    <a rel="noopener" href="javascript:void(0)" data-toggle="dropdown">
+                        <img src="./assets/flags/{{translate.currentLang}}.png" width="20">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right profile">
+                        <li *ngFor="let language of translate.getLangs()">
+                            <a href="javascript:void(0)" (click)="switchLang(language)"
+                                [ngClass]="{'active': language === translate.currentLang}">
+                                <i class="far"><img src="./assets/flags/{{language}}.png" width="20"></i>
+                                <span class="ml-2">{{language | translate}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li class="profile tab">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                        <img src="{{filedata?filedata:'./assets/img/noavatar.png'}}" alt="user-image"
+                            class="img-circle img-inline">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right profile animated fadeIn" style="    border: 1px solid #ddd;
+                    overflow: hidden;">
+                        <!-- <li>
+                            <a href="javascript:void(0)" target="_blank" (click)="dowloadFile()"
+                                class="dropdown-item ai-icon">
+                                <i class="far fa-file-alt text-info"></i>
+                                <span class="ml-2">Hướng dẫn sử dụng</span>
+                            </a>
+
+                        </li> -->
+                        <li>
+                            <a href="javascript:void(0)" (click)="showCreateUpdate()" class="dropdown-item ai-icon">
+                                <i class="far fa-user text-primary"></i>
+                                <span class="ml-2">Thông tin tài khoản </span>
+                            </a>
+
+                        </li>
+                        <!-- <li>
+                            <a href="javascript:void(0)" class="dropdown-item ai-icon" (click)="colorConfig()">
+                                <i class="fas fa-palette text-success"></i>
+                                <span class="ml-2">Cấu hình màu sắc</span>
+                            </a>
+
+                        </li> -->
+                        <!-- <li>
+                            <a href="javascript:void(0)" (click)="fnChangePassword()" class="dropdown-item ai-icon">
+                                <i class="fas fa-lock text-success"></i>
+                                <span class="ml-2">Đổi mật khẩu</span>
+                            </a>
+                        </li> -->
+                        <li class="last">
+                            <a href="javascript:void()" class="dropdown-item ai-icon" (click)="logout()">
+                                <i class="fas fa-sign-out-alt text-danger"></i>
+                                <span class="ml-2">Đăng xuất </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- END TOPBAR -->

@@ -1,0 +1,61 @@
+# ##############################################################################
+# Angular Standard .gitignore
+# ##############################################################################
+
+# Built outputs and distribution
+/dist/
+/.angular/
+/tmp/
+/out-tsc/
+/bazel-out/
+
+# Dependencies
+/node_modules/
+
+# Profiling and logs
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+*.log
+*.log*
+
+# IDEs and Editors
+/.idea/
+/.project
+/.classpath
+/.cproject
+/.settings/
+/.vscode/
+*.launch
+*.sublime-workspace
+*.sublime-project
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing and Coverage
+/coverage/
+/cypress/screenshots/
+/cypress/videos/
+/.nyc_output/
+
+# Environment secrets and local configurations
+.env
+.env.local
+.env.*.local
+*.env.json
+src/environments/environment.development.ts
+src/environments/environment.production.ts
+# Note: Bạn có thể giữ lại file environment.ts gốc làm mẫu, 
+# nhưng nên ignore các file chứa thông tin nhạy cảm (API Key, Production Credentials).
+
+# Local history
+.history/

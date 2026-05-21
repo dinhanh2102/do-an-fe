@@ -1,0 +1,113 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?a681b94483d2d9efeeb065adf5e169df") format("truetype"),
+url("./flaticon.woff?a681b94483d2d9efeeb065adf5e169df") format("woff"),
+url("./flaticon.woff2?a681b94483d2d9efeeb065adf5e169df") format("woff2"),
+url("./flaticon.eot?a681b94483d2d9efeeb065adf5e169df#iefix") format("embedded-opentype"),
+url("./flaticon.svg?a681b94483d2d9efeeb065adf5e169df#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "briefcase": "\f101",
+    "home": "\f102",
+    "file": "\f103",
+    "workflow": "\f104",
+    "technics": "\f105",
+    "settings": "\f106",
+    "dashboard": "\f107",
+    "add": "\f108",
+    "edit": "\f109",
+    "clipboard": "\f10a",
+    "approval": "\f10b",
+    "selection": "\f10c",
+    "list": "\f10d",
+    "to-do": "\f10e",
+    "check": "\f10f",
+    "accept": "\f110",
+    "done": "\f111",
+    "stop": "\f112",
+    "cancel": "\f113",
+    "file-1": "\f114",
+    "verified": "\f115",
+    "windows-squares-button-outline": "\f116",
+);
+
+.flaticon-briefcase:before {
+    content: map-get($flaticon-map, "briefcase");
+}
+.flaticon-home:before {
+    content: map-get($flaticon-map, "home");
+}
+.flaticon-file:before {
+    content: map-get($flaticon-map, "file");
+}
+.flaticon-workflow:before {
+    content: map-get($flaticon-map, "workflow");
+}
+.flaticon-technics:before {
+    content: map-get($flaticon-map, "technics");
+}
+.flaticon-settings:before {
+    content: map-get($flaticon-map, "settings");
+}
+.flaticon-dashboard:before {
+    content: map-get($flaticon-map, "dashboard");
+}
+.flaticon-add:before {
+    content: map-get($flaticon-map, "add");
+}
+.flaticon-edit:before {
+    content: map-get($flaticon-map, "edit");
+}
+.flaticon-clipboard:before {
+    content: map-get($flaticon-map, "clipboard");
+}
+.flaticon-approval:before {
+    content: map-get($flaticon-map, "approval");
+}
+.flaticon-selection:before {
+    content: map-get($flaticon-map, "selection");
+}
+.flaticon-list:before {
+    content: map-get($flaticon-map, "list");
+}
+.flaticon-to-do:before {
+    content: map-get($flaticon-map, "to-do");
+}
+.flaticon-check:before {
+    content: map-get($flaticon-map, "check");
+}
+.flaticon-accept:before {
+    content: map-get($flaticon-map, "accept");
+}
+.flaticon-done:before {
+    content: map-get($flaticon-map, "done");
+}
+.flaticon-stop:before {
+    content: map-get($flaticon-map, "stop");
+}
+.flaticon-cancel:before {
+    content: map-get($flaticon-map, "cancel");
+}
+.flaticon-file-1:before {
+    content: map-get($flaticon-map, "file-1");
+}
+.flaticon-verified:before {
+    content: map-get($flaticon-map, "verified");
+}
+.flaticon-windows-squares-button-outline:before {
+    content: map-get($flaticon-map, "windows-squares-button-outline");
+}

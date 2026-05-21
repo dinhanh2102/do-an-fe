@@ -1,0 +1,104 @@
+<div class='content-wrapper'>
+  <section class="box">
+    <div class="content-body" >
+      <form name="form" class="tab-form-demo" #f="ngForm" autocomplete="off">
+        <div class="row">
+          <header>
+            <h2 class="title" style="font-size:18px;font-weight: 500;">{{title}}</h2>
+          </header>
+          
+          <div class="col-xl-12 col-lg-4 col-md-4 col-sm-12" style="text-align: end;">
+
+            <div class="controls">
+              <button type="button" class="btn btn-primary" (click)="xemBangLuong()" container="body">
+                <i class="fa fa-eye"></i>
+                Xem bảng lương
+              </button>
+              <button type="button" *appUipermission="['F1151']" class="btn btn-success" (click)="phatSinhKyCong()" container="body">
+                <i class="fa fa-plus"></i>
+                Phát sinh bảng công
+              </button>
+            </div>
+
+          </div>
+        </div>
+        <div class="row" style="margin-top:30px;">
+          <div class="col-xl-12">
+            <div class="table-wrapper">
+              <table class="table-custom" style="width: max-content;">
+                <thead>
+                  <tr style="border-bottom: 1px solid #ddd;">
+                    <th style="width: 50px;" class="text-center ">
+                      STT
+                    </th>
+                    <th style="min-width: 150px; font-size: 14px;" class="text-center">Tên nhân viên </th>
+                    <ng-container *ngFor="let item of listHeader">
+                      <th width="150px" class="text-center" [ngClass]="item.thu ==  'Chủ nhật' ? 'sunday' : ''">
+                        <div>
+                          {{item.thu}}
+                        </div>
+                        <div style="font-size: 18px; font-weight: 500;">
+                          {{item.ngay}}
+                        </div>
+                      </th>
+                    </ng-container>
+                    <th width="100px" class="text-center">
+                      <div>Số ngày công</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of listKyCongChiTiet; let i = index">
+                    <td class="text-center">{{i + 1}}</td>
+                    <td>
+                      <div style="font-size: 14px;font-weight: 500;">
+                        {{row.tenNhanVien}}
+                      </div>
+                      <div>
+                        {{row.maNhanVien}}
+                      </div>
+                    </td>
+                    <ng-container *ngFor="let item of row.chamCongList">
+                      <td (click)="showThongTinNgay(item.idChamCong, item.ngay,row.maNhanVien)">
+                        <div>
+                          {{item.label}}
+                        </div>
+                        <div>{{item.thoiGianVao | date:'HH:mm'}} - {{item.thoiGianRa | date:'HH:mm'}}</div>
+                      </td>
+                    </ng-container>
+                    <td class="text-center">
+                      {{row.soNgayCong}}
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot *ngIf="listKyCongChiTiet.length == 0">
+                  <tr class="bold">
+                    <td [colSpan]="12" class="text-center image-no-data">
+                      <div>
+                        <img src="./assets/img/no-data.png">
+                        <div>
+                          Không có dữ liệu
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+    <div class="content-body text-right">
+
+      <button type="button" class="btn btn-danger" (click)="closeModal()">
+        <i class="fa fa-power-off"></i> &nbsp;
+        <span>
+          Đóng
+        </span>
+      </button>
+    </div>
+  </section>
+</div>

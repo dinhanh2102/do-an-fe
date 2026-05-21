@@ -1,0 +1,14 @@
+<!-- <app-view-tab></app-view-tab> -->
+<div (window:resize)="onResize($event)" class="main-wrapper {{isMobile ?'mobile':''}}"
+    [ngClass]="{'menu-toggle':appSetting.MenuFolded}" appUisectionbox>
+    <app-top-bar></app-top-bar>
+    <app-left-bar></app-left-bar>
+    <div class="content-container">
+        <app-page-toolbar></app-page-toolbar>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<app-notify-list>
+</app-notify-list>
+<app-theme>
+</app-theme>

@@ -1,0 +1,252 @@
+<div class='content-wrapper'>
+    <section class="box">
+        <div class="content-body" style="height: calc(100vh - 200px);">
+            <form name="form" class="tab-form-demo" #f="ngForm" autocomplete="off">
+                <div class="row">
+                    <header>
+                        <h2 class="title">{{appSetting.PageTitle}}</h2>
+                    </header>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 text-center">
+                        <img class="img-thumbnail"
+                            style="height:166px;width:166px;border-radius: 100px; object-fit: cover;"
+                            [src]="fileProcess.fileModel.DataURL?fileProcess.fileModel.DataURL: (filedata?filedata:'/assets/img/noavatar.png')">
+                        <button type="button" class="btn-upload" (click)="fileAvatar.click();" container="body">
+                            <i class="fas fa-camera" style="font-size: 24px;line-height: 46px;"
+                                ngbTooltip="Upload ảnh"></i>
+                        </button>
+                        <input name="fileDataAvatar" style="display: none;" type="file" accept=".jpg,.jpeg,.png"
+                            accept="image/png, image/gif, image/jpeg" id="fileDataSheet" #fileAvatar
+                            (change)="onFileChange($event)" single />
+                    </div>
+
+                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group ">
+                                    <label class="form-label">Tên Nhân Viên
+                                        <span class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" name="tenNhanVien" autocomplete="off"
+                                            [(ngModel)]="model.tenNhanVien" maxlength="500" required
+                                            [disabled]="isView">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12" *ngIf="id">
+                                <div class="form-group ">
+                                    <label class="form-label">Mã nhân viên
+                                        <span class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="maNhanVien" required
+                                                autocomplete="off" [(ngModel)]="model.maNhanVien" maxlength="500"
+                                                disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                                <div class="form-group ">
+                                    <label class="form-label">Số điện thoại<span
+                                            class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="soDienThoai" required
+                                                autocomplete="off" [(ngModel)]="model.soDienThoai" maxlength="10"
+                                                [disabled]="isView">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group ">
+                                    <label class="form-label">Email<span
+                                            class='text-danger text-strong'>&nbsp;*</span></label>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" name="email" autocomplete="off"
+                                            [(ngModel)]="model.email" maxlength="500" [disabled]="isView" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                                <div class="form-group ">
+                                    <label class="form-label">Địa chỉ
+                                        <span class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" name="diaChi" autocomplete="off"
+                                            [(ngModel)]="model.diaChi" maxlength="500" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group ">
+                                    <label class="form-label">Ngày sinh
+                                        <span class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <ng-container *ngIf="!isView">
+                                            <div class="input-group">
+                                                <input class="form-control input-date" placeholder="dd/mm/yyyy"
+                                                    (click)="ngaySinh.toggle()" name="ngaySinh" [maxDate]="maxDateDOB"
+                                                    [(ngModel)]="model.ngaySinh" [maxDate]="maxDateDOB"
+                                                    [minDate]="minDate" ngbDatepicker required
+                                                    #ngaySinh="ngbDatepicker">
+                                                <div class="input-icon">
+                                                    <span class="dtp-icon" (click)="ngaySinh.toggle()"
+                                                        name="ngaySinh"></span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="isView">
+                                            <div class="input-group">
+                                                <input class="form-control input-date" placeholder="dd/mm/yyyy" disabled
+                                                    (click)="ngaySinh.toggle()" name="ngaySinh" [maxDate]="maxDateDOB"
+                                                    [(ngModel)]="model.ngaySinh" [maxDate]="maxDateDOB"
+                                                    [minDate]="minDate" ngbDatepicker #ngaySinh="ngbDatepicker">
+                                                <div class="input-icon">
+                                                    <span class="dtp-icon" (click)="ngaySinh.toggle()"
+                                                        name="ngaySinh"></span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group ">
+                                    <label class="form-label">Căn cước công dân
+                                        <span class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <input type="text" class="form-control" name="canCuocCongDan" autocomplete="off"
+                                            [(ngModel)]="model.canCuocCongDan" maxlength="12" [disabled]="isView"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 radio">
+                                <div class="form-group ">
+                                    <label class="form-label">Giới tính
+                                        <span class='text-danger text-strong'>&nbsp;*</span>
+                                    </label>
+                                    <ng-container *ngIf="isView">
+                                        <ng-container *ngFor="let status of constant.listGioiTinh; let i = index ">
+                                            <label class="radio">{{status.Name}}
+                                                <input type="radio" name="gioiTinh" [(ngModel)]="model.gioiTinh"
+                                                    required disabled [value]="status.Id">
+                                                <span class="checkround"></span>
+                                            </label>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container *ngIf="!isView">
+                                        <ng-container *ngFor="let status of constant.listGioiTinh; let i = index ">
+                                            <label class="radio">{{status.Name}}
+                                                <input type="radio" name="gioiTinh" [(ngModel)]="model.gioiTinh"
+                                                    [value]="status.Id">
+                                                <span class="checkround"></span>
+                                            </label>
+                                        </ng-container>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12">
+                        <div class="form-group ">
+                            <label class="form-label">Đơn vị
+                                <span class='text-danger text-strong'>&nbsp;*</span>
+                            </label>
+                            <div class="controls">
+                                <ng-select [disabled]="isView || groupUserInfo.name != 'giám đốc'" [items]="listDonVi" bindLabel="name"
+                                    bindValue="id" (change)="OnChangeDonVi($event)" [clearable]="false"
+                                    [(ngModel)]="model.idDonVi" name="idDonVi" required>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12">
+                        <div class="form-group ">
+                            <label class="form-label">Phòng ban
+                                <span class='text-danger text-strong'>&nbsp;*</span>
+                            </label>
+                            <div class="controls">
+                                <ng-select [disabled]="isView  || groupUserInfo.name != 'giám đốc'" [items]="listPhongBan"
+                                    bindLabel="name" bindValue="id" [clearable]="false"
+                                    (change)="OnChangePhongBan($event)" [(ngModel)]="model.idPhongBan" name="idPhongBan"
+                                    required>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12">
+                        <div class="form-group ">
+                            <label class="form-label">Chức danh
+                                <span class='text-danger text-strong'>&nbsp;*</span>
+                            </label>
+                            <div class="controls">
+                                <ng-select [disabled]="isView  || groupUserInfo.name != 'giám đốc'" [items]="listChucDanh"
+                                    bindLabel="name" bindValue="id" [clearable]="false" [(ngModel)]="model.idChucDanh"
+                                    name="idChucDanh" required>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group ">
+                            <label class="form-label">Số tài khoản ngân hàng</label>
+                            <div class="controls">
+                                <input type="text" class="form-control" name="soTKNganHang" autocomplete="off"
+                                    [(ngModel)]="model.soTKNganHang" maxlength="20" [disabled]="isView">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12">
+                        <div class="form-group ">
+                            <label class="form-label">Ngân hàng</label>
+                            <div class="controls">
+                                <ng-select [items]="listNganHang" bindLabel="name" bindValue="id"
+                                    [(ngModel)]="model.nganHang" name="tennganHang" [disabled]="isView"></ng-select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-12">
+                        <div class="form-group ">
+                            <label class="form-label">Trình độ học vấn
+                                <span class='text-danger text-strong'>&nbsp;*</span>
+                            </label>
+                            <div class="controls">
+                                <ng-select [disabled]="isView" [items]="listTrinhDo" bindLabel="name" bindValue="id"
+                                    [clearable]="false" [(ngModel)]="model.idTrinhDo" name="idTrinhDo" required>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        <div class="content-body text-right">
+            <button type="button" class="btn btn-success" (click)="save(false)" [disabled]="!f.form.valid">
+                <i class=" fa fa-save"></i>&nbsp;
+                <span>{{'Lưu' | translate}}</span>
+            </button>
+            <ng-container *ngIf="!id">
+                <button type="button" class="btn btn-success" [disabled]="!f.form.valid" (click)=" saveAndContinue()">
+                    <i class="fa fa-save"></i>&nbsp;
+                    <span>{{'Lưu và tiếp tục' | translate}}</span>
+                </button>
+            </ng-container>
+            <button type="button" class="btn btn-danger" (click)="closeModal(false)">
+                <i class="fa fa-power-off"></i> &nbsp;
+                <span>
+                    {{'Đóng' | translate}}
+                </span>
+            </button>
+        </div>
+    </section>
+</div>

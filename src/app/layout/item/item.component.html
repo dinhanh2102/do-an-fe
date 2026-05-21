@@ -1,0 +1,6 @@
+<li routerLinkActive="active" *appUipermission="item.permission">
+    <a routerLinkActive="active" [routerLink]="[item.url]" class="nosub">
+        <i *ngIf="item.icon" class="{{item.icon}}"></i>
+        <span class="title">{{item.titleDefault | translate}}</span>
+    </a>
+</li>

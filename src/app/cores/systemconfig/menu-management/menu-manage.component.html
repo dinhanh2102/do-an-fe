@@ -1,0 +1,122 @@
+<div class='content-wrapper'>
+    <section class="box">
+        <header>
+            <h2 class="title">Danh sách menu ({{searchModel.totalItems}})</h2>
+            <div class="actions">
+                <button type="button" class="btn btn-danger" (click)="updateIndex()" container="body"
+                    *appUipermission="['F0001','F0002']">
+                    <i class="fa fa-save"></i>
+                    {{'Cập nhật thứ tự' | translate}}
+                </button>
+
+                <button type="button" class="btn btn-success" (click)="showCreateUpdate('')" container="body"
+                    *appUipermission="['F0001']">
+                    <i class="fa fa-plus"></i>
+                    {{'Thêm mới' | translate}}
+                </button>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
+                    <ejs-treegrid #treegrid [dataSource]='menulist' [treeColumnIndex]='1' [enableHover]='false'
+                        childMapping='children' [allowRowDragAndDrop]='true' [treeColumnIndex]='1'>
+                        <e-columns>
+                            <e-column field='' headerText='Xử lý' textAlign='left' width=180>
+                                <ng-template #template let-data>
+                                    <button type="button" (click)="showCreateUpdate('',data.id)"
+                                        class="btn btn-xs btn-success" placement="bottom"
+                                        ngbTooltip="{{'Thêm mới' | translate}}" container="body"
+                                      >
+                                        <span class="fas fa-plus" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" (click)='showCreateUpdate(data.id)'
+                                        class="btn btn-xs btn-warning" placement="bottom"
+                                        ngbTooltip="{{'SharedLabel.Update' | translate}}" container="body"
+                                        *appUipermission="['F0002']">
+                                        <span class="fa fa-edit" aria-hidden="true"></span>
+                                    </button>
+                                    <button class="btn btn-xs btn-danger" (click)="showConfirmDelete(data.id)"
+                                        placement="bottom" ngbTooltip="{{'SharedLabel.Delete' | translate}}"
+                                        container="body" *appUipermission="['F0003']">
+                                        <span class="fas fa-times" aria-hidden="true"></span>
+                                    </button>
+                                    <ng-container *ngIf="data.isDisable == false">
+                                        <button name="disable" class="btn btn-xs btn-primary"
+                                            (click)="disableConfirm(data.id)" placement="bottom"
+                                            ngbTooltip="{{'Menu đang hiện' | translate}}" container="body"
+                                            *appUipermission="['F0004']">
+                                            <span class="fas fa-lock-open" aria-hidden="true"></span>
+                                        </button>
+                                    </ng-container>
+                                    <ng-container *ngIf="data.isDisable == true">
+                                        <button name="disableopen" class="btn btn-xs btn-danger"
+                                            (click)="disableConfirm(data.id)" placement="bottom"
+                                            ngbTooltip="{{'Menu đang ẩn' | translate}}" container="body"
+                                            *appUipermission="['F0004']">
+                                            <span class="fas fa-lock" aria-hidden="true"></span>
+                                        </button>
+                                    </ng-container>
+                                </ng-template>
+                            </e-column>
+                            <e-column field='titleDefault' headerText='Tên menu' textAlign='left' width=250></e-column>
+                            <e-column field='titleKeyTranslate' headerText='Key dịch đa ngôn ngữ' textAlign='left'
+                                width=250></e-column>
+                            <e-column headerText='Icon' textAlign='left' width=80><ng-template #template let-data><i
+                                        class="{{data.icon}}"></i></ng-template></e-column>
+                            <e-column headerText='Url' textAlign='left' minwidth=200><ng-template #template let-data><a
+                                        *ngIf="data.url" href="{{data.url}}"
+                                        target="_blank">{{data.url}}</a></ng-template></e-column>
+                            <e-column headerText='Menu ẩn' textAlign='center' width=150>
+                                <ng-template #template let-data>
+                                    <i *ngIf="!data.isDisable" class="far fa-check-circle text-success"></i>
+                                    <i *ngIf="data.isDisable" class="far fa-check-circle text-danger"></i>
+                                </ng-template>
+                            </e-column>
+                            <e-column headerText='Chức năng động' textAlign='center' width=150>
+                                <ng-template #template let-data>
+                                    <i *ngIf="!data.functionAuto" class="far fa-circle text-dark"></i>
+                                    <i *ngIf="data.functionAuto" class="far fa-check-circle text-success"></i>
+                                </ng-template>
+                            </e-column>
+                            <e-column field='isDefaultMenu' headerText='Mặc định hiển thị' textAlign='center' width=150>
+                                <ng-template #template let-data>
+                                    <i *ngIf="!data.isDefaultMenu" class="far fa-circle text-dark"></i>
+                                    <i *ngIf="data.isDefaultMenu" class="far fa-check-circle text-success"></i>
+                                </ng-template>
+                            </e-column>
+                        </e-columns>
+                    </ejs-treegrid>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-view btn-success">
+                        <i class="fas fa-plus"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">{{'Thêm mới' | translate}}</small>
+                    <button class="btn btn-view btn-warning">
+                        <i class="fas fa-edit"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">{{'SharedLabel.Update' | translate}}</small>
+
+                    <button class="btn btn-view btn-danger">
+                        <i class="fas fa-times"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">{{'SharedLabel.Delete' | translate}}</small>
+
+                    <button class="btn btn-view btn-primary">
+                        <i class="fas fa-lock-open"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20"> Hiện menu</small>
+
+                    <button class="btn btn-view btn-danger">
+                        <i class="fas fa-lock"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">Ẩn menu</small>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

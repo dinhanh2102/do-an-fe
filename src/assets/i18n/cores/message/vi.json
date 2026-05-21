@@ -1,0 +1,21 @@
+{
+    "Message": {
+        "ERR0001": "Lỗi phát sinh trong quá trình xử lý",
+        "ERR0002": "Lỗi validate model",
+        "MSG0001": "Tài khoản hoặc mật khẩu không đúng",
+        "MSG0002": "Tài khoản đã bị khóa, vui lòng liên hệ quản trị viên để kích hoạt lại",
+        "MSG0003": "Phiên đăng nhập đã hết",
+        "MSG0004": "OTP không đúng",
+        "MSG0005": "Mật khẩu hiện tại không đúng",
+        "MSG0006": "Tài khoản đã tồn tại",
+        "MSG0007": "Email đã tồn tại",
+        "MSG0008": "Số điện thoại đã tồn tại",
+        "MSG0009": "Người dùng không tồn tại",
+        "MSG0014": "Nhóm người dùng đã tồn tại",
+        "MSG0015": "Nhóm người dùng không tồn tại",
+        "MSG0016": "Nhóm người dùng đã được sử dụng, không thể xóa",
+        "MSG0023": "Cập nhật thành công",
+        "MSG0017": "File không có dung lượng",
+        "MSG0033": "Hai mật khẩu nhập đang không trùng nhau"
+    }
+}

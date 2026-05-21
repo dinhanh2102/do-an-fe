@@ -1,0 +1,118 @@
+<div class='content-wrapper'>
+    <div class="row">
+        <div class=" custom-col-xl-12  col-lg-3">
+            <section class="box">
+                <header style="height: 70px; display: flex; justify-content: space-between;">
+                    <div style="width: 100%;">
+                        <h2 class="title">Danh Sách Đơn Vị</h2>
+                    </div>
+                    <div *ngIf="groupUserInfo.name != constant.NhanVienGroup" class="actions btn_add">
+                        <button type="button" class="btn btn-success" (click)="showCreateUpdate('',1)" container="body" *appUipermission="['F1180']">
+                            <i class="fa fa-plus"></i>&nbsp;{{'Thêm mới' | translate}}
+                        </button>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
+                            <ejs-treegrid #treegrid [dataSource]='donViList' [enableHover]='false' 
+                                (contextMenuOpen)='contextMenuOpen($event)' [contextMenuItems]='contexmenuttems'
+                                (contextMenuClick)='contextMenuClick($event)' [treeColumnIndex]='0'
+                                childMapping='children' (rowSelected)='onClickDonVi($event)'
+                                (queryCellInfo)='tooltip($event)' [searchSettings]='searchSettings'
+                                [toolbar]='toolbarOptions' width='100%'>
+                                <e-columns>
+                                    <e-column field='maDonVi' width="150px" headerText='Mã' textAlign='left'></e-column>
+                                    <e-column field='tenDonVi' width="300px" headerText='Tên đơn vị' textAlign='left'
+                                        tooltip='ten'></e-column>
+                                </e-columns>
+                            </ejs-treegrid>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </section>
+        </div>
+        <div class="dpd col-lg-9">
+            <section class="box">
+                <header>
+                    <h2 class="title">Danh Sách Phòng Ban (<span id="total">{{this.searchModel.totalItems}}</span>)</h2>
+                    <div>
+                        <button class="btn btn-success btn-upload" (click)="showCreateUpdate('',3)">
+                            <i class="fas fa-plus"></i> &nbsp;{{'Thêm mới' | translate}}</button>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
+                            <perfect-scrollbar class="ps-bordered" [config]="constant.ScrollConfig"
+                                style="height:auto; width:100%;">
+                                <table class="table table-bordered table-tr-fixed" style="min-width:1100px">
+                                    <thead>
+                                        <tr>
+                                            <th width="5%" class="text-center"> {{'STT' | translate}}</th>
+                                            <th *ngIf="groupUserInfo.name != constant.NhanVienGroup" width="10%" class="text-center"> {{'Xử lý'| translate}}
+                                            </th>
+                                            <!-- <th width="100px" class="text-center"> Mã  </th> -->
+                                            <th width="100px" class="text-center"> Tên phòng ban </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of listPhongBan ; let i = index;">
+                                            <td class="text-center">{{i+1}}</td>
+                                            <td class="text-center" *ngIf="groupUserInfo.name != constant.NhanVienGroup">
+                                                <ng-container>
+                                                    <button  type="button" class="btn btn-xs btn-warning"
+                                                        ngbTooltip="Cập nhật" (click)="showCreateUpdate(row.id,3)">
+                                                        <span class="fas fa-edit" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button  type="button" class="btn btn-xs btn-danger" ngbTooltip="Xoá"
+                                                        (click)="showConfirmDelete(row.id,2)">
+                                                        <span class="fas fa-times" aria-hidden="true"></span>
+                                                    </button>
+                                                </ng-container>
+                                            </td>
+                                            <!-- <td><nts-text-more [ntsLimit]="10" [ntsText]="row.ma"></nts-text-more></td> -->
+                                            <td><nts-text-more [ntsText]="row.tenPhongBan"></nts-text-more></td>
+                                            <!--[ntsLimit]="28"-->
+                                        </tr>
+                                    </tbody>
+                                    <tfoot *ngIf="listPhongBan.length == 0">
+                                        <tr class="bold">
+                                            <td colspan="70" class="text-center image-no-data">
+                                                <div>
+                                                    <img src="./assets/img/no-data.png">
+                                                    <div>
+                                                        {{'SharedLabel.NotData' | translate}}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </perfect-scrollbar>
+                        </div>
+                    </div>
+                    <div class="row mt-3" *ngIf="listPhongBan.length != 0">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start">
+                            <div class="controls ">
+                                <select class="form-control" style="border: 1px solid #ddd;"
+                                    [(ngModel)]="searchModel.pageSize" (ngModelChange)="searchPhongBan()"
+                                    name="pageSize">
+                                    <option *ngFor="let item of constant.ListPageSize" [value]="item">{{item}}</option>
+                                </select>
+                            </div>
+                            <label class="form-label " style="padding:4px;">Bản ghi/trang</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12  d-flex justify-content-end">
+                            <ngb-pagination [collectionSize]="searchModel.totalItems" [(page)]="searchModel.pageNumber"
+                                (pageChange)="searchPhongBan()" [pageSize]="searchModel.pageSize" [maxSize]="5"
+                                [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- <div class="p-1" *ngIf="tabs.length>0">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li *ngFor="let item of tabs;let i = index" [ngbNavItem]="item.id">
+            <a ngbNavLink (click)="refreshLink(item.url)">
+                <i class="{{item.icon}}"></i>&nbsp;{{item.name}}
+                <span class="close position-relative pl-2 font-weight-light" (click)="close($event, item.id)">×</span>
+            </a>
+            <ng-template ngbNavContent>
+                <div>
+                    <router-outlet></router-outlet>
+                </div>
+            </ng-template>
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="nav"></div>
+</div> -->
+<div *ngIf="tabs.length>0" class="tab">
+    <div>
+        <a href="javascript:void(0)" style="font-size: 23px;" (click)="scrollBack()">
+            <i class="fas fa-chevron-left icon"></i>
+        </a>
+    </div>
+    <ul class="nav nav-tabs" id="menuView">
+        <ng-container *ngFor="let item of tabs;let i = index">
+            <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link" [ngClass]="{'active':active==item.id}"
+                    (click)="refreshLink(item.url,item.id)">
+                    <i class="{{'mdi mdi-'+item.icon}}"></i>&nbsp;{{item.name}}
+                    <span class="close position-relative pl-2 font-weight-light" (click)="close(item.id)">×</span>
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+    <div>
+        <a href="javascript:void(0)" style="font-size: 23px; " (click)="scrollNext()">
+            <i class="fas fa-chevron-right icon"></i>
+        </a>
+    </div>
+</div>

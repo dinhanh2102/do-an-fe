@@ -1,0 +1,21 @@
+{
+    "Message": {
+        "ERR0001": "An error occurred during processing.",
+        "ERR0002": "Validation errors",
+        "MSG0001": "UserName or Password is incorrect!",
+        "MSG0002": "Your account has been locked, please contact Admin to reactivate",
+        "MSG0003": "Your session has expired, please login",
+        "MSG0004": "OTP is invalid",
+        "MSG0005": "Your current password is missing or incorrect",
+        "MSG0006": "UserName already exits",
+        "MSG0007": "Email already exits",
+        "MSG0008": "Phone already exits",
+        "MSG0009": "User does not exist ",
+        "MSG0014": "Group user already exits",
+        "MSG0015": "Group user does not exist",
+        "MSG0016": "Group user has been used, can not delete",
+        "MSG0023": "Update was successful!",
+        "MSG0017": "You haven't uploaded the file yet",
+        "MSG0033": "The two entered passwords do not match"
+    }
+}

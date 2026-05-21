@@ -1,0 +1,104 @@
+<div class='content-wrapper'>
+    <section class="box">
+        <header>
+            <h2 class="title">{{'Danh sách loại ca' | translate}} (<b class="text-danger">{{searchModel.totalItems | ntsnumber}}</b>)</h2>
+            <div class="actions">
+                <button type="button" class="btn btn-success" (click)="showCreateUpdate('')" container="body" *appUipermission="['F0111']">
+                    <i class="fa fa-plus"></i>
+                    {{'Thêm mới' | translate}}
+                </button>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
+                     <perfect-scrollbar class="ps-bordered" [config]="constant.ScrollXConfig" style="height:auto; width:100%;">
+                        <table class="table table-bordered table-tr-fixed" style="min-width:690px">
+                            <thead>
+                                <tr>
+                                    <th width="50px" class="text-center">{{'STT' | translate}}</th>
+                                    <th width="100px" class="text-center">{{'Xử lý' | translate}}</th>
+                                    <th width="800px" class="text-center">
+                                        <a (click)="clickOrderBy('Name')"> {{'Tên loại ca' | translate}}</a>
+                                    </th>
+                                    <th min-width="200px" class="text-center">
+                                        <a (click)="clickOrderBy('HeSo')"> {{'Hệ số' | translate}}</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of groups; let i = index">
+                                    <td class="text-center">{{startIndex+i}}</td>
+                                    <td class="text-center">
+                                        <ng-container *ngIf="row.id != '1'">
+                                        <button type="button" (click)='showCreateUpdate(row.id)'
+                                            class="btn btn-xs btn-warning" placement="bottom" ngbTooltip="{{'SharedLabel.Update' | translate}}"
+                                            container="body" container="body" *appUipermission="['F0112']">
+                                            <span class="fa fa-edit" aria-hidden="true"></span>
+                                        </button>
+                                    </ng-container>
+                                        <ng-container *ngIf="row.id != '1'">
+                                            <button class="btn btn-xs btn-danger" (click)="showConfirmDelete(row.id)" 
+                                            placement="bottom" ngbTooltip="{{'SharedLabel.Delete' | translate}}" container="body" container="body" *appUipermission="['F0113']">
+                                            <span class="fas fa-times" aria-hidden="true"></span>
+                                        </button>
+                                        </ng-container>
+                                        
+                                    </td>
+                                    <td>{{row.name}}</td>
+                                    <td>{{row.heSo}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot *ngIf="groups.length == 0">
+                                <tr class="bold">
+                                    <td colspan="6" class="text-center image-no-data">
+                                        <div>
+                                            <img src="./assets/img/no-data.png">
+                                            <div>
+                                                {{'SharedLabel.NotData' | translate}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+            <div class="row mt-3" *ngIf="groups.length != 0"> 
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start">
+                    <div class="controls ">
+                        <select class="form-control" style="border: 1px solid #ddd;" [(ngModel)]="searchModel.pageSize"
+                            (ngModelChange)="search()" name="pageSize">
+                            <option *ngFor="let item of constant.ListPageSize" [value]="item">{{item}}</option>
+                        </select>
+                    </div>
+                    <label class="form-label " style="padding:4px;">{{'Số lượng / Trang' | translate}}</label>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12  d-flex justify-content-end">
+                    <ngb-pagination [collectionSize]="searchModel.totalItems" [(page)]="searchModel.pageNumber"
+                        (pageChange)="search()" [pageSize]="searchModel.pageSize" [maxSize]="5" [rotate]="true"
+                        [boundaryLinks]="true"></ngb-pagination>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-view btn-success">
+                        <i class="fas fa-plus"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">{{'Thêm mới' | translate}}</small>
+                    <button class="btn btn-view btn-warning">
+                        <i class="fas fa-edit"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">{{'SharedLabel.Update' | translate}}</small>
+
+                    <button class="btn btn-view btn-danger">
+                        <i class="fas fa-times"></i>
+                    </button>&nbsp;
+                    <small class="padding-right-20">{{'SharedLabel.Delete' | translate}}</small>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

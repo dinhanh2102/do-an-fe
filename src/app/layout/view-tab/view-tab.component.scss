@@ -1,0 +1,49 @@
+.close {
+    font-size: 1.4rem;
+    opacity: 0.1;
+    transition: opacity 0.3s;
+}
+.nav-link:hover > .close {
+    opacity: 0.8;
+}
+
+app-view-tab {
+    .tab {
+        display: flex;
+        width: 100%;
+        ul {
+            padding: 5px 0px 0px 0px;
+            width: 100%;
+            background: #fff;
+        }
+    }
+
+    .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        overflow: hidden;
+    }
+
+    .nav-tabs .nav-item {
+        margin-bottom: -1px;
+        flex: none;
+        width: auto;
+    }
+
+    .nav-link {
+        display: flex;
+        margin: auto;
+        align-items: center;
+        height: 100%;
+        padding: 0 10px 0 10px;
+    }
+
+    .icon {
+        //color: #ff9800;
+        color: #d78430;
+        padding-top: 9px;
+    }
+}

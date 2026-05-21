@@ -1,0 +1,94 @@
+<div class="top-bar page-toolbar" *ngIf="appSetting.Breadcrumb.length>0">
+    <div class="header">
+        <div class="header-content navbar">
+            <div class="header-left">
+                <div class="wrap-breadcrumb">
+                    <ul class="breadcrumbs">
+                        <li>
+                            <a href="/trang-chu">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li *ngFor="let item of appSetting.Breadcrumb">
+                            <a>
+                                <i class="{{item.icon}}" *ngIf="item.icon" aria-hidden="true"></i>
+                                {{item.titleDefault | translate}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-right" *ngIf="menuOptions.isSearch&&menuOptions.searchOptions">
+                <ul class="navbar-nav" *ngIf="menuOptions.isSearch&&menuOptions.searchOptions">
+                    <nts-search-bar [options]="menuOptions.searchOptions" [(ngModel)]="menuOptions.searchModel"
+                        name="searchModel" (change)="search()" (refresh)="refresh()">
+                    </nts-search-bar>
+                </ul>
+                <ul class="navbar-nav" style="padding-left: 16px;">
+                    <li class="nav-item" *ngFor="let item of menuOptions.menus">
+                        <a class="nav-link" href="javascript:;" *ngIf="!item.routerUrl&&!item.url&&item.isDisplay"
+                            (click)="item.click(item)" placement="bottom-right" [ngbTooltip]="item.tooltip"
+                            tooltipClass="custom-tooltip">
+                            <i class="menu-icon" style="color:#006fff;" class="{{item.iconCss}}"
+                                [ngClass]="{'selected':item.selected}"></i>
+                            <span *ngIf="item.title">{{item.title}}</span>
+                        </a>
+                        <a class="nav-link" *ngIf="item.routerUrl&&item.isDisplay" [routerLink]="[item.routerUrl]"
+                            placement="bottom-right" [ngbTooltip]="item.tooltip" tooltipClass="custom-tooltip"
+                            style="font-size: 32px;">
+                            <i class="menu-icon" style="color:#006fff;" class="{{item.iconCss}}"
+                                [ngClass]="{'selected':item.selected}"></i>
+                            <span *ngIf="item.title">{{item.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" style="padding-left: 17.6px;align-items: center;">
+                    <div *ngIf="menuExports && menuExports.length > 0 && menuExports[0].isDisplay" style=" font-size: 16px;color:
+                                #39424E;">
+                        Xuất file:
+                    </div>
+                    <ng-container *ngFor="let item of menuExports;let i=index">
+                        <div class="menu-space-line"
+                            *ngIf="menuExports && menuExports.length > 0 && i > 0 && item.isDisplay">
+                        </div>
+                        <li class="nav-item" *ngIf="item.isDisplay">
+                            <a class="nav-link" href="javascript:;" (click)="item.click(item)" placement="bottom-right"
+                                [ngbTooltip]="item.tooltip" tooltipClass="custom-tooltip">
+                                <img *ngIf="item.iconCss==='fas fa-file-excel'" src="./assets/img/excel.png">
+                                <img *ngIf="item.iconCss==='fas fa-file-pdf'" src="./assets/img/pdf.png">
+                                <span *ngIf="item.title">{{item.title}}</span>
+                            </a>
+                        </li>
+                    </ng-container>
+                    <li class="nav-item dropdown" *ngIf="menuOptions.menuMores&&menuOptions.menuMores.length>0">
+                        <a class="nav-link" rel="noopener" href="javascript:void(0)" data-toggle="dropdown"
+                            placement="bottom-right" ngbTooltip="Chức năng" tooltipClass="custom-tooltip">
+                            <i class="fas fa-th-list"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void()" class="dropdown-item" *ngFor="let item of menuOptions.menuMores"
+                                (click)="item.click(item)">
+                                <i class="{{item.iconCss}}"></i>
+                                <span class="ml-2">{{item.title}}</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" style="padding-left: 17.6px;align-items: center;"
+                    *ngIf="menuOptions.isSearchDate">
+                    <div style=" font-size: 16px;color:
+                                #39424E;">
+                        Năm:
+                    </div>
+                    <div class="menu-space-line">
+                    </div>
+                    <li class="nav-item">
+                        <ng-select [items]="listYear" [(ngModel)]="year" name="year" style="width: 200px;"
+                            [clearable]="false" (ngModelChange)="searchDate()">
+                        </ng-select>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

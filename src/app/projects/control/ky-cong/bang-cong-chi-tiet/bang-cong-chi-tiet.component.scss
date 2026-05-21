@@ -1,0 +1,79 @@
+div {
+    padding: 0;
+    margin: 0;
+}
+
+.saturday {
+    background-color: rgb(148, 62, 0);
+
+}
+
+.table-custom {
+    border-collapse: separate;
+}
+
+.table-wrapper {
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.table-custom {
+    border-spacing: 0;
+
+}
+
+.table-wrapper th {
+    background-color: #fff;
+    padding: 5px;
+    color: #333;
+    border-bottom: 1.5px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+
+}
+
+.table-wrapper td {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+
+}
+.table-wrapper td:hover {
+   background: #f3f5ff;
+} 
+.table-wrapper th:nth-child(1),
+.table-wrapper td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    border-left: 1px solid #ddd;
+}
+
+.table-wrapper th:nth-child(1) {
+    background-color: #fff;
+    color: #333;
+}
+
+
+.table-wrapper th:nth-child(2),
+.table-wrapper td:nth-child(2) {
+    position: sticky;
+    left: 50px;
+}
+
+
+.table-wrapper th:nth-child(2) {
+    background-color: #fff;
+    color: #333;
+    height: 100%;
+}
+
+.sunday {
+    color: #f44336 !important;
+}
+
+.app-view-ngay-cong .modal-dialog{
+    min-width: 600px;
+}

@@ -1,0 +1,88 @@
+<div class='content-wrapper'>
+    <section class="box">
+        <header>
+            <h2 class="title">Danh sách chức danh (<span id="total">{{this.searchModel.totalItems}}</span>)</h2>
+            <div>
+                <button class="btn btn-success btn-upload" (click)="showCreateUpdate('',3)"
+                    *appUipermission="['F1170']">
+                    <i class="fas fa-plus"></i> &nbsp;{{'SharedLabel.Add' | translate}}</button>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
+                    <perfect-scrollbar class="ps-bordered" [config]="constant.ScrollConfig"
+                        style="height:auto; width:100%;">
+                        <table class="table table-bordered table-tr-fixed" style="min-width:1100px">
+                            <thead>
+                                <tr>
+                                    <th width="5px" class="text-center"> {{'SharedLabel.STT' | translate}}</th>
+                                    <th width="100px" class="text-center"> {{'SharedLabel.Handle'| translate}}
+                                    </th>
+                                    <th width="200px" class="text-center"> Tên chức danh </th>
+                                    <th width="200px" class="text-center"> Lương cơ bản (VNĐ) </th>
+                                    <th width="200px" class="text-center"> Phòng ban </th>
+                                    <th width="200px" class="text-center"> Đơn vị </th>
+                                    <!-- <th width="200px" class="text-center"> Mô tả </th> -->
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of listChucDanh ; let i = index;">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td class="text-center">
+                                        <ng-container>
+                                            <button type="button" class="btn btn-xs btn-success" ngbTooltip="Xem"
+                                                (click)="showView(row.id)" *appUipermission="['F0173']">
+                                                <span class="fas fa-eye" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-xs btn-warning" ngbTooltip="Cập nhật"
+                                                (click)="showCreateUpdate(row.id,3)"
+                                                *appUipermission="['F1170','F1171']">
+                                                <span class="fas fa-edit" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-xs btn-danger" ngbTooltip="Xoá"
+                                                (click)="showConfirmDelete(row.id,2)" *appUipermission="['F1172']">
+                                                <span class="fas fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </ng-container>
+                                    </td>
+                                    <td><nts-text-more [ntsText]="row.tenChucDanh"></nts-text-more></td>
+                                    <td>{{row.luongCoBan | number}}</td>
+                                    <td><nts-text-more [ntsText]="row.tenPhongBan"></nts-text-more></td>
+                                    <td><nts-text-more [ntsText]="row.tenDonVi"></nts-text-more></td>
+                                    <!-- <td><nts-text-more [ntsText]="row.moTa"></nts-text-more></td> -->
+                                </tr>
+                            </tbody>
+                            <tfoot *ngIf="listChucDanh.length == 0">
+                                <tr class="bold">
+                                    <td colspan="70" class="text-center image-no-data">
+                                        <div>
+                                            <img src="./assets/img/no-data.png">
+                                            <div>{{'SharedLabel.NotData' | translate}}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </perfect-scrollbar>
+                </div>
+            </div>
+            <div class="row mt-3" *ngIf="listChucDanh.length != 0">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex justify-content-start">
+                    <div class="controls ">
+                        <select class="form-control" style="border: 1px solid #ddd;" [(ngModel)]="searchModel.pageSize"
+                            (ngModelChange)="searchChucDanh()" name="pageSize">
+                            <option *ngFor="let item of constant.ListPageSize" [value]="item">{{item}}</option>
+                        </select>
+                    </div>
+                    <label class="form-label " style="padding:4px;">Bản ghi/trang</label>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12  d-flex justify-content-end">
+                    <ngb-pagination [collectionSize]="searchModel.totalItems" [(page)]="searchModel.pageNumber"
+                        (pageChange)="searchChucDanh()" [pageSize]="searchModel.pageSize" [maxSize]="5" [rotate]="true"
+                        [boundaryLinks]="true"></ngb-pagination>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </section>
+</div>

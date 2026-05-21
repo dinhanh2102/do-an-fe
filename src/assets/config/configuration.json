@@ -1,0 +1,14 @@
+{
+  "ServerApi": "https://localhost:5001/",
+  "ServerImage": "https://localhost:5001/",
+  "ServerWithApiUrl": "https://localhost:5001/api/",
+  "ClientId": "KLTN",
+  "ClientSecret": "kltn",
+  "PhoneHotline": "094 111 1698",
+  "ImageOriginal": "ImageOriginal",
+  "ImageThumb": "ImageThumb",
+  "Document": "Document",
+  "IsReCaptCha": false,
+  "IsMultiLanguage": false,
+  "ShowLogoTopBar":false
+}

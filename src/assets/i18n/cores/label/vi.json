@@ -1,0 +1,117 @@
+{
+    "ProductName": "Quản lý nhân sự",
+    "vi": "Tiếng Việt",
+    "en": "Tiếng Anh",
+    "Menu": {
+        "Home": "Trang chủ",
+        "About": "Giới thiệu",
+        "SystemManagement": {
+            "Title": "Quản trị hệ thống",
+            "Category": "Quản lý danh mục",
+            "Template": "Quản lý biểu mẫu",
+            "AboutConfig": "Cấu hình giới thiệu",
+            "Account": {
+                "Title": "Tài khoản",
+                "GroupUser": "Nhóm người dùng",
+                "User": "Người dùng",
+                "History": "Lịch sử thao tác",
+                "Permission": "Xem phân quyền"
+            }
+        },
+        "MenuSystem": "Quản lý menu",
+        "FunctionAuto": "Cấu hình chức năng",
+        "Interface":"Cấu hình giao diện",
+        "DisableMenu": "Ẩn/hiện menu"
+    },
+    "SharedLabel": {
+        "Add":"Thêm mới",
+        "Update":"Cập nhật",
+        "Delete":"Xóa",
+        "Detail":"Chi tiết",
+        "ExportFile":"Xuất tệp",
+        "ResetPassword":"Đặt lại mật khẩu",
+        "Page": "bản ghi/trang",
+        "STT": "STT",
+        "Handle": "Xử lý",
+        "Status": "Tình trạng",
+        "Total": "Tổng",
+        "Save": "Lưu",
+        "SaveAndContinue": "Lưu và tiếp tục",
+        "Close": "Đóng",
+        "Note": "Ghi chú",
+        "Error":"Lỗi",
+        "NotData": "Không có dữ liệu",
+        "Name": "Tên",
+        "List": "Danh sách",
+        "LockAccount": "Khóa tài khoản",
+        "UnLockAccount": "Mở khóa tài khoản",
+        "UpdateAt": "Ngày chỉnh sửa"
+    },
+    "Login": {
+        "Title": "Đăng nhập",
+        "UserName": "Tên đăng nhập",
+        "Password": "Mật khẩu",
+        "SubmitLogin": "Đăng nhập",
+        "Remember": "Ghi nhớ",
+        "ValidteRequiredUser": "Nhập tên đăng nhập.",
+        "ValidteRequiredPassword": "Nhập mật khẩu"
+    },
+    "User": {
+        "TitleUserGroup": "Danh sách nhóm người dùng",
+        "TitleManagement": "Quản lý tài khoản",
+        "TitleViewUserInfo": "Xem thông tin tài khoản",
+        "TitleAddUser": "Thêm mới tài khoản",
+        "TitleUpdateUser": "Chỉnh sửa tài khoản",
+        "UserName": "Tên tài khoản",
+        "FullName": "Họ và tên",
+        "Description": "Mô tả",
+        "Email": "Email",
+        "Phone": "Số điện thoại",
+        "GroupUser": "Nhóm người dùng",
+        "GroupFunctionList": "Danh sách nhóm quyền",
+        "FunctionList": "Dánh sách quyền",
+        "GroupFunction": "nhóm quyền",
+        "Function": "quyền",
+        "Choice": "Chọn",
+        "GroupFunctionName": "Tên nhóm chức năng",
+        "Functions": "Quyền/Tổng quyền",
+        "FunctionName": "Tên quyền",
+        "UserInfo": "Thông tin cá nhân",
+        "Password":"Mật khẩu",
+        "PasswordOld": "Mật khẩu cũ",
+        "PasswordNew": "Mật khẩu mới",
+        "EnterPassword": "Nhập lại mật khẩu",
+        "ChangePassword": "Thay đổi mật khẩu",
+        "UserGroupName": "Tên nhóm",
+        "HistoryActionList": "Danh sách lịch sử thao tác",
+        "TypeAction": "Phân loại",
+        "BrowserName": "Tên trình duyệt",
+        "BrowserVersion": "Phiên bản của trình duyệt",
+        "Device": "Thiết bị",
+        "TimeAccess": "Thời gian truy cập",
+        "Content": "Nội dung",
+        "PermissionCode": "Mã quyền",
+        "FunctionInfo": "Thông tin người dùng",
+        "Type": "Loại tài khoản"
+    },
+    "UserGroup":{
+        "ListTitle":"Danh sách nhóm người dùng",
+        "AddTitle":"Thêm mới nhóm người dùng",
+        "UpdateTitle":"Cập nhật nhóm người dùng",
+        "Name":"Tên nhóm",
+        "Description":"Mô tả",
+        "Type":"Loại nhóm quyền",
+        "FunctionPermission":"Phân quyền chức năng"
+    },
+    "File": {
+        "Title": "Danh sách biểu mẫu",
+        "FileName": "Tên biểu mẫu",
+        "TemplateNo": "Số biểu mẫu",
+        "ChooseFile": "Chọn file"
+    },
+    "Status": {
+        "Active": "Đang hoạt động",
+        "NoActive": "Không hoạt động"
+    }
+    
+}

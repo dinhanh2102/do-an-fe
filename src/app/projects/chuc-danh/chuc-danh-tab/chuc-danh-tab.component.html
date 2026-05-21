@@ -1,0 +1,19 @@
+<div class="content-wrapper app-module-create padding-top-10">
+    <form name="form" class="tab-form-demo" #f="ngForm">
+        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+            <li [ngbNavItem]="1">
+                <a ngbNavLink (click)="goToTab(1,true)">Thông tin chung</a>
+                <ng-template ngbNavContent>
+                    <app-chuc-danh-view [id]="id"></app-chuc-danh-view>
+                </ng-template>
+            </li>
+            <!-- <li [ngbNavItem]="2">
+                <a ngbNavLink (click)="goToTab(2,true)">Chứng chỉ yêu cầu</a>
+                <ng-template ngbNavContent>
+                    <app-chung-chi-yeu-cau [idChucDanh]="id"></app-chung-chi-yeu-cau>
+                </ng-template>
+            </li> -->
+        </ul>
+        <div [ngbNavOutlet]="nav"></div>
+    </form>
+</div>

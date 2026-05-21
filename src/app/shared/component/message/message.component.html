@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title text-uppercase">{{'SharedLabel.Error' | translate}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" style="font-size: 18px;text-align: center;padding-top: 30px;padding-bottom: 30px;"
+  *ngIf="!isList">
+  <div>
+    <img src="./assets/img/warning.png">
+    <div style="padding-top: 20px;">
+      {{message}}
+    </div>
+    <div style="padding-top: 10px;" *ngIf="exception">
+      <nts-text-more [ntsLimit]="40" [ntsText]="exception" style="overflow-wrap: break-word;font-size: 12px;">
+      </nts-text-more>
+    </div>
+  </div>
+</div>
+<div class="modal-body" style="font-size: 18px;padding-top: 39px;padding-bottom: 32px;" *ngIf="isList">
+  <div>
+    <img src="./assets/img/warning.png">
+    <div style="padding-top: 24px;">
+      <div *ngFor="let message of messages">
+        {{message }}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="modal-footer">
+  <button type="button" ngbAutofocus class="btn btn-danger" (click)="closeModal()" style="height:40px;">
+    <span>Đóng</span>
+  </button>
+</div> -->

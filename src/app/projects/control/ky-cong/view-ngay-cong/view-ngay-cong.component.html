@@ -1,0 +1,69 @@
+<form name="form" #f="ngForm">
+  <div class="modal-header">
+    <h4 class="modal-title text-uppercase">{{title}}</h4>
+    <a href="javascript:void(0)" class="close_modal" type="button" class="close" aria-label="Close"
+      (click)="closeModal(false)">
+      <span aria-hidden="true">&times;</span>
+    </a>
+  </div>
+
+  <div class=' modal-body' style="padding: 20px !important;">
+    <div class="content-body">
+
+      <div style="margin-bottom: 10px;">
+        Thông tin ca
+      </div>
+    </div>
+    <div class="body" style="border: 1px solid #ddd;
+    /* padding: 10px 15px; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 15px; */
+    border-radius: 6px;
+    overflow: hidden;">
+      <div class="title-body row-content bg-title-header">
+        <div class="title-body-left title-text">Thông tin</div>
+        <div class="title-body-left title-text">Giá trị</div>
+      </div>
+      <div class="content-body">
+        
+        <div class="row-content time-input">
+          <div class="so-cong">Thời gian vào</div>
+          <div class="time-input ">
+            <input [disabled]="groupUser == constant.NhanVienGroup" type="number" class="input-element" [(ngModel)]="model.gioVao" name="gioVao" required min="1" max="24" (ngModelChange)="checkAndClearGioVao(24)">
+            <div>:</div>
+            <input [disabled]="groupUser == constant.NhanVienGroup" type="number" class="input-element" [(ngModel)]="model.phutVao" name="phutVao" required min="1" max="60" (ngModelChange)="checkAndClearPhutVao(60)">
+          </div>
+        </div>
+        <div class="row-content time-input" >
+          <div class="so-cong">Thời gian ra</div>
+          <div class="time-input">
+            <input [disabled]="groupUser == constant.NhanVienGroup" type="number" class="input-element" [(ngModel)]="model.gioRa" name="gioRa" required  min="1" max="24" (ngModelChange)="checkAndClearGioRa(24)"/>
+            <div>:</div>
+            <input [disabled]="groupUser == constant.NhanVienGroup" type="number" class="input-element" [(ngModel)]="model.phutRa" name="phutRa" required  min="1" max="60" (ngModelChange)="checkAndClearPhutRa(60)"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body text-right mt-4">
+      <button type="button" class="btn btn-danger" (click)="closeModal(false)" >
+        <i class="fa fa-power-off"></i> &nbsp;
+        <span>
+          Đóng
+        </span>
+      </button>
+      <button type="button" class="btn btn-success" (click)="save()" *appUipermission="['F1151']" [disabled]="!f.form.valid">
+        <i class="fa fa-power-off"></i> &nbsp;
+        <span>
+          Lưu
+        </span>
+      </button>
+      <button type="button" class="btn btn-danger" (click)="clear()" *appUipermission="['F1151']">
+        <i class="fa fa-power-off"></i> &nbsp;
+        <span>
+          Xóa
+        </span>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,20 @@
+<div class="page-sidebar {{appSetting.MenuFolded ? 'collapseit' : 'expandit'}}" [ngClass]="{'show-logo-menu':!modelConfig.iShowLogoTopBar}">
+    <div class="logo-top-menu" *ngIf="!modelConfig.iShowLogoTopBar">
+        <div class="logo-menu-image text-center">
+            <a href="/trang-chu">
+                <img src="../../../assets/img/OIG1.jpg" style="border-radius: 50%;">
+                <!-- <img [ngClass]="appSetting.MenuFolded?'logo-min':'logo'" [src]="appSetting.MenuFolded? './assets/img/logo-folded.png':'./assets/img/logo.png'"> -->
+            </a>
+        </div>
+    </div>
+    <perfect-scrollbar class="left-bar-scroll">
+        <div class="page-sidebar-wrapper" id="main-menu-wrapper">
+            <ul class="wraplist wrapper-menu">
+                <ng-container *ngFor="let item of navigation">
+                    <nav-collapsable *ngIf="item.type=='collapsable'" [item]="item"></nav-collapsable>
+                    <nav-item *ngIf="item.type=='item'" [item]="item"></nav-item>
+                </ng-container>
+            </ul>
+        </div>
+    </perfect-scrollbar>
+</div>

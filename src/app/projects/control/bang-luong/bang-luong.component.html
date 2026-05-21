@@ -1,0 +1,72 @@
+<div class='content-wrapper'>
+    <section class="box">
+        <div class="content-body" >
+            <form name="form" class="tab-form-demo" #f="ngForm" autocomplete="off">
+                <div class="row">
+                    <header class="mt-4">
+                        <h2 class="title">{{title}}</h2>
+                        <!-- <button class="btn btn-primary" type="button"  (click)="phatSinhBangLuong()"> <i class="fa fa-plus"></i> Phát sinh bảng lương</button> -->
+                    </header>
+                </div>
+            </form>
+        </div>
+        <div class="content-body text-right">
+            <perfect-scrollbar class="ps-bordered" [config]="constant.ScrollConfig" style="height:auto; width:100%;">
+                <table class="table table-bordered table-tr-fixed" style="min-width:1500px">
+                    <thead>
+                        <tr>
+                            <th width="5px" class="text-center"> {{'STT' | translate}}</th>
+                            <th width="100px" class="text-center">Mã nhân viên</th>
+                            <th width="200px" class="text-center">Tên nhân viên</th>
+                            <th width="200px" class="text-center">Chức danh</th>
+                            <th width="100px" class="text-center">Tổng ngày công</th>
+                            <th width="100px" class="text-center">Lương cơ bản (VNĐ)</th>
+                            <th width="100px" class="text-center">Ngày công thực</th>
+                            <th width="100px" class="text-center">Số ngày muộn</th>
+                            <th width="100px" class="text-center">Số tiền muộn</th>
+                            <th width="100px" class="text-center">Thực lãnh (VNĐ)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of listBangLuong ; let i = index;">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-left">{{row.maNhanVien}}</td>
+                            <td class="text-left">  {{row.tenNhanVien}}</td>
+                            <td class="text-left">  {{row.tenChucDanh}}</td>
+                            <td class="text-left">  {{row.tongSoCong}}</td>
+                            <td class="text-right">  {{row.luongCoBan | number}}</td>
+                            <td class="text-left">  {{row.soNgayCong}}</td>
+                            <td class="text-left">  {{row.soNgayMuon}}</td>
+                            <td class="text-left">  {{row.soTienMuon}}</td>
+                            <td class="text-right">  
+                                {{row.tienLuong | number }}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot *ngIf="listBangLuong.length === 0">
+                        <tr class="bold">
+                            <td colspan="70" class="text-center image-no-data">
+                                <div>
+                                    <img src="./assets/img/no-data.png">
+                                    <div>
+                                        {{'SharedLabel.NotData' | translate}}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </perfect-scrollbar>
+        </div>
+        <div class="modal-footer">
+       
+            <button type="button" class="btn btn-danger" (click)="closeModal(false)">
+                <i class="fa fa-power-off"></i> &nbsp;
+                <span>
+                    Đóng
+                </span>
+            </button>
+        </div>
+    </section>
+    
+</div>

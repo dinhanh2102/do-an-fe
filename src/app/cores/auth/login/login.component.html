@@ -1,0 +1,113 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12">
+                <div class="wrap d-md-flex">
+                    <div class="login-wrap p-4 p-lg-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4 text-uppercase">{{'Login.Title' | translate }}</h3>
+                            </div>
+                            <div class="w-100" *ngIf="config.IsMultiLanguage">
+                                <ul class="navbar">
+                                    <li class="dropdown flag_dropdown">
+                                        <a class="nav-link" rel="noopener" href="javascript:void(0)"
+                                            data-toggle="dropdown">
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a href="javascript:void(0)" *ngFor="let language of translate.getLangs()"
+                                                (click)="switchLang(language)" class="dropdown-item ai-icon"
+                                                [ngClass]="{'active': language === translate.currentLang}">
+                                                <i class="far">
+                                                </i>
+                                                <span class="ml-2">{{language | translate}}</span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form class="signin-form" (ngSubmit)="f.form.valid && login()" #f="ngForm" method="post">
+                            <div class="form-group mb-3">
+                                <label class="label">{{'Login.UserName' | translate }}</label>
+                                <input type="text" name="username" class="form-control"
+                                    placeholder="{{'Login.UserName' | translate }}" [(ngModel)]="model.username"
+                                    #username="ngModel" required
+                                    [ngClass]="{'is-invalid':f.submitted && username.invalid}">
+                                <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
+                                    <div *ngIf="username.errors.required">{{'Login.ValidteRequiredUser' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label">{{'Login.Password' | translate }}</label>
+                                <div class="input-wrapper">
+                                    <input type="password" name="password" id="password-field" class="form-control"
+                                        placeholder="{{'Login.Password' | translate }}" [(ngModel)]="model.password"
+                                        #password="ngModel" required method="post" autocomplete="off"
+                                        [ngClass]="{'is-invalid':f.submitted && password.invalid}">
+                                    <i toggle="#password-field" class="fas icon-last fa-eye-slash toggle-password"
+                                        style="color: #839CB0;"></i>
+                                </div>
+                                <div *ngIf="f.submitted && password.invalid" class="invalid-feedback"
+                                    style="display: block;">
+                                    <div *ngIf="password.errors.required">{{'Login.ValidteRequiredPassword' | translate
+                                        }}</div>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group mb-3" [hidden]="!this.modelConfig.isUseCaptcha">
+                                <div class="col-12"> <canvas id="captcahCanvas" style="position: relative; left: 1px;"
+                                        width="300" height="80"></canvas></div>
+
+                                <div class="form-group  col-12"
+                                    style="display: flex; padding-bottom: 16px; padding-top: 2px;">
+                                    <input style="width: 100%;" class="form-control" type="text"
+                                        [(ngModel)]="captcha_input" name="captch_input">
+                                    <button type="button" class="btn btn-secondary" (click)="createCaptcha()">
+                                        <i class="fas fa-sync-alt"></i></button>
+
+                                </div>
+                            </div> -->
+                            <div class="text-danger text-center mb-3">
+                                {{message}}
+                            </div>
+                            <div class="form-group">
+                                <button class="form-control btn btn-primary submit px-3">{{'Login.SubmitLogin' |
+                                    translate}}</button>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-50 text-left">
+                                </div>
+                                <div class="w-50 text-right">
+                                    <label class="checkbox-primary mb-0">
+                                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                        <label class="custom-control-label" for="defaultUnchecked">{{'Login.Remember' |
+                                            translate}}</label>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last"
+                        style="background-image: url('../../../../assets/img/home.png'); background-position: center; background-size: cover;">
+                        <div class="text w-100">
+                            <img class="logo" src="../../../../assets/img/OIG1.jpg"
+                                style="height: 160px; width: auto;margin-bottom: 30px; border-radius: 50%;">
+
+                            <h2>Quản lý nhân sự</h2>
+                        </div>
+                    </div>
+
+                    <!-- <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                        <div class="text w-100">
+                            <img class="logo" src="./assets/img/logo.png"
+                                style="height: 160px; width: auto;padding-bottom: 30px;">
+                            <h2>{{'ProductName' | translate }}</h2>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

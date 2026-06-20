@@ -119,7 +119,7 @@ export class DonViComponent implements OnInit {
     ];
 
   }
-  groupUserInfo: any;
+  groupUserInfo: any = {};
   getGroupUser() {
     this.comboboxService.getGroupUser(this.groupUser).subscribe(
       (data: any) => {

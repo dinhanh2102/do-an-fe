@@ -28,24 +28,24 @@
                 <span class="input-group-text" id="inputGroupFileAddon01">Tải lên</span>
               </div>
               <div class="custom-file">
-                <img [src]="url" *ngIf="format==='image' && url" height="500"> <br />
-                <!-- <video [src]="url" *ngIf="format==='video' && url" height="500" controls></video> <br /> -->
                 <input type="file" class="custom-file-input" id="inputGroupFile01"
                   aria-describedby="inputGroupFileAddon01" (change)="onSelectFile($event)" accept="video/*">
                 <label class="custom-file-label" for="inputGroupFile01">{{ selectedFileName || 'Chọn file' }}</label>
-                
-
               </div>
               <button *ngIf="selectedFileName" type="button" class="btn btn-danger" (click)="clearFile()">Clear</button>
             </div>
-            <div>
-              <!-- <img [src]="url" *ngIf="format==='image' && url" height="500"> <br />
-              <video [src]="url" *ngIf="format==='video' && url" height="500" controls></video> <br />
-              <input type='file' (change)="onSelectFile($event)" /> -->
-            </div>
           </div>
-          <div class="col-lg-12" style="text-align: center;">
-            <video [src]="url" *ngIf="format==='video' && url" height="500" controls></video> <br />
+          <div class="col-lg-12 text-center mt-3">
+             <h4>Webcam (Trực tiếp)</h4>
+             <video #video autoplay muted width="100%" style="max-width: 500px; border: 1px solid #ccc;"></video>
+             <div class="mt-2">
+                 <button type="button" class="btn btn-primary" (click)="startCamera()">Bật Camera</button> &nbsp;
+                 <button type="button" class="btn btn-warning" (click)="startRecording()" *ngIf="isCameraReady && !isRecording">Bắt đầu ghi hình</button> &nbsp;
+                 <button type="button" class="btn btn-danger" (click)="stopRecording()" *ngIf="isRecording">Dừng ghi</button>
+             </div>
+             <hr />
+             <h4 *ngIf="url && format==='video'">Video đã ghi / đã tải lên</h4>
+             <video [src]="url" *ngIf="format==='video' && url" height="300" controls></video> <br />
           </div>
         </div>
       </form>

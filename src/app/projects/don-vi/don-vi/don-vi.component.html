@@ -7,7 +7,7 @@
                         <h2 class="title">Danh Sách Đơn Vị</h2>
                     </div>
                     <div *ngIf="groupUserInfo.name != constant.NhanVienGroup" class="actions btn_add">
-                        <button type="button" class="btn btn-success" (click)="showCreateUpdate('',1)" container="body" *appUipermission="['F1180']">
+                        <button type="button" class="btn btn-success" (click)="showCreateUpdate('',1)" container="body">
                             <i class="fa fa-plus"></i>&nbsp;{{'Thêm mới' | translate}}
                         </button>
                     </div>

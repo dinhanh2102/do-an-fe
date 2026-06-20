@@ -3,8 +3,7 @@
         <header>
             <h2 class="title">Danh sách chức danh (<span id="total">{{this.searchModel.totalItems}}</span>)</h2>
             <div>
-                <button class="btn btn-success btn-upload" (click)="showCreateUpdate('',3)"
-                    *appUipermission="['F1170']">
+                <button class="btn btn-success btn-upload" (click)="showCreateUpdate('',3)">
                     <i class="fas fa-plus"></i> &nbsp;{{'SharedLabel.Add' | translate}}</button>
             </div>
         </header>
@@ -31,16 +30,15 @@
                                     <td class="text-center">
                                         <ng-container>
                                             <button type="button" class="btn btn-xs btn-success" ngbTooltip="Xem"
-                                                (click)="showView(row.id)" *appUipermission="['F0173']">
+                                                (click)="showView(row.id)">
                                                 <span class="fas fa-eye" aria-hidden="true"></span>
                                             </button>
                                             <button type="button" class="btn btn-xs btn-warning" ngbTooltip="Cập nhật"
-                                                (click)="showCreateUpdate(row.id,3)"
-                                                *appUipermission="['F1170','F1171']">
+                                                (click)="showCreateUpdate(row.id,3)">
                                                 <span class="fas fa-edit" aria-hidden="true"></span>
                                             </button>
                                             <button type="button" class="btn btn-xs btn-danger" ngbTooltip="Xoá"
-                                                (click)="showConfirmDelete(row.id,2)" *appUipermission="['F1172']">
+                                                (click)="showConfirmDelete(row.id,2)">
                                                 <span class="fas fa-times" aria-hidden="true"></span>
                                             </button>
                                         </ng-container>

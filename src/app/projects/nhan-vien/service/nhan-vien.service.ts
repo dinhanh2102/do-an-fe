@@ -15,7 +15,7 @@ const httpOptionsFile = {
   providedIn: 'root'
 })
 export class NhanVienService {
-  private apiUrl = 'http://127.0.0.1:5000/'
+  private apiUrl = 'http://127.0.0.1:2024/'
   constructor(
     private http: HttpClient,
     private config: Configuration

@@ -13,8 +13,11 @@ import { FileService } from 'src/app/shared/services/file.service';
 export class WebcamComponent {
   @ViewChild('video') videoElement: ElementRef;
 
-  video: HTMLVideoElement;
   videoUrl: string;
+  mediaRecorder: any;
+  recordedChunks: any[] = [];
+  isCameraReady = false;
+  isRecording = false;
   constructor(
     private service: NhanVienService,
     private messageService: MessageService,
@@ -74,8 +77,44 @@ export class WebcamComponent {
     this.format = '';
     // Đặt lại giá trị của input file
     const fileInput = document.getElementById('inputGroupFile01') as HTMLInputElement;
-    fileInput.value = ''; // Xóa giá trị của input
+    if (fileInput) fileInput.value = ''; // Xóa giá trị của input
     this.file_up = null;
+  }
+
+  startCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+      this.videoElement.nativeElement.srcObject = stream;
+      this.isCameraReady = true;
+    }).catch(err => {
+      this.messageService.showError('Không thể truy cập camera: ' + err.message);
+    });
+  }
+
+  startRecording() {
+    this.recordedChunks = [];
+    const stream = this.videoElement.nativeElement.srcObject;
+    this.mediaRecorder = new (window as any).MediaRecorder(stream);
+    this.mediaRecorder.ondataavailable = (event: any) => {
+      if (event.data.size > 0) {
+        this.recordedChunks.push(event.data);
+      }
+    };
+    this.mediaRecorder.onstop = () => {
+      const blob = new Blob(this.recordedChunks, { type: 'video/mp4' });
+      this.file_up = new File([blob], "recorded_video.mp4", { type: 'video/mp4' });
+      this.url = URL.createObjectURL(blob);
+      this.format = 'video';
+      this.selectedFileName = 'recorded_video.mp4';
+    };
+    this.mediaRecorder.start();
+    this.isRecording = true;
+  }
+
+  stopRecording() {
+    if (this.mediaRecorder) {
+      this.mediaRecorder.stop();
+      this.isRecording = false;
+    }
   }
   upload_image() {
     const folderName = this.model.maNhanVien; // Thay 'your_folder_name' bằng tên thư mục thực tế
@@ -103,6 +142,10 @@ export class WebcamComponent {
   closeModal(isOK: boolean) {
     if (this.fileProcess.fileModel.DataURL != undefined) {
       this.fileProcess.fileModel.DataURL = null;
+    }
+    const stream = this.videoElement?.nativeElement?.srcObject;
+    if (stream) {
+      stream.getTracks().forEach((track: any) => track.stop());
     }
     this.router.navigate(['/nhan-vien/manage']);
   }

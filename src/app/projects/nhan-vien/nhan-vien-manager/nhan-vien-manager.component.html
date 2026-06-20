@@ -3,7 +3,7 @@
         <header style="padding-top: 2px;">
             <h2 class="title">Danh sách nhân viên</h2>
             <div class="actions">
-                <button *appUipermission="['F0160']" type="button" class="btn btn-success"
+                <button type="button" class="btn btn-success"
                     (click)="showCreateUpdate('')" container="body">
                     <i class="fa fa-plus"></i>
                     Thêm mới
@@ -37,21 +37,21 @@
                                             <ng-container>
                                                 <button type="button" class="btn btn-xs btn-success"
                                                     ngbTooltip="{{'SharedLabel.Detail' | translate}}"
-                                                    (click)="showView(row.id)" *appUipermission="['F0165']">
+                                                    (click)="showView(row.id)">
                                                     <span class="fas fa-eye" aria-hidden="true"></span>
                                                 </button>
                                                 <button type="button" (click)='showCreateUpdate(row.id)'
                                                     class="btn btn-xs btn-warning" placement="bottom"
                                                     ngbTooltip="{{'SharedLabel.Update' | translate}}" container="body"
-                                                    container="body" *appUipermission="['F0160','F0163']">
+                                                    container="body">
                                                     <span class="fa fa-edit" aria-hidden="true"></span>
                                                 </button>
-                                                <button class="btn btn-xs btn-success" *appUipermission="['F0164']"
+                                                <button class="btn btn-xs btn-success"
                                                     (click)="addVideo(row.id, row.maNhanVien)" placement="bottom"
                                                     ngbTooltip="{{'Thêm khuôn mặt' | translate}}" container="body">
                                                     <span class="fas fa-plus" aria-hidden="true"></span>
                                                 </button>
-                                                <button class="btn btn-xs btn-danger" *appUipermission="['F0164']"
+                                                <button class="btn btn-xs btn-danger"
                                                     (click)="showConfirmDelete(row.id, row.maNhanVien)" placement="bottom"
                                                     ngbTooltip="{{'SharedLabel.Delete' | translate}}" container="body">
                                                     <span class="fas fa-times" aria-hidden="true"></span>
